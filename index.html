@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS2 Case Simulator</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="6" fill="#f0a500" opacity="0.15"/>
+        <path d="M7 14L14 7L21 14L14 21L7 14Z" fill="#f0a500"/>
+        <path d="M11 14L14 11L17 14L14 17L11 14Z" fill="#0f0f13"/>
+      </svg>
+      CS2 Simulator
+    </a>
+
+    <div class="nav-links">
+      <a href="#" data-page="cases" class="active">Cases</a>
+      <a href="#" data-page="inventory">Inventário</a>
+      <a href="#" data-page="history">Histórico</a>
+    </div>
+
+    <div id="nav-user-section"></div>
+
+    <button class="nav-wallet" id="wallet-btn" title="Clique para adicionar $10">
+      <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+        <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+        <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+      </svg>
+      <span id="wallet-balance">$ 50.00</span>
+    </button>
+  </nav>
+
+  <!-- PAGE: CASES -->
+  <section class="page active" id="page-cases">
+    <h1 class="page-title">Cases Disponíveis</h1>
+    <p class="page-subtitle">Escolha uma case e tente a sorte. Você começa com $50,00 — clique na carteira para adicionar mais.</p>
+    <div class="cases-grid" id="cases-grid"></div>
+  </section>
+
+  <!-- PAGE: OPENING -->
+  <section class="page" id="page-opening">
+    <div class="opening-header">
+      <button class="back-btn" id="back-btn">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M9.78 12.78a.75.75 0 01-1.06 0L4.47 8.53a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L6.06 8l3.72 3.72a.75.75 0 010 1.06z"/>
+        </svg>
+        Voltar
+      </button>
+      <h2 style="font-size:1.15rem;font-weight:700;">Abrir Case</h2>
+    </div>
+
+    <!-- Info da case -->
+    <div class="opening-case-info">
+      <img id="opening-case-img" src="" alt="case">
+      <div>
+        <h2 id="opening-case-name"></h2>
+        <p style="color:var(--text-muted);font-size:0.88rem;margin-top:4px">Probabilidades baseadas no CS2 real</p>
+        <div class="opening-case-price">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.736 6.979C9.208 6.193 9.696 6 10 6c.304 0 .792.193 1.264.979a1 1 0 001.715-1.029C12.279 4.784 11.232 4 10 4s-2.279.784-2.979 1.95c-.285.475-.507 1-.67 1.55H6a1 1 0 000 2h.013a9.358 9.358 0 000 1H6a1 1 0 100 2h.351c.163.55.385 1.075.67 1.55C7.721 15.216 8.768 16 10 16s2.279-.784 2.979-1.95a1 1 0 10-1.715-1.029c-.472.786-.96.979-1.264.979-.304 0-.792-.193-1.264-.979a4.265 4.265 0 01-.264-.521H10a1 1 0 100-2H8.017a7.36 7.36 0 010-1H10a1 1 0 100-2H8.472c.08-.185.167-.36.264-.521z" clip-rule="evenodd"/>
+          </svg>
+          <span id="opening-case-price"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roleta -->
+    <div class="roulette-wrapper">
+      <div class="roulette-indicator"></div>
+      <div class="roulette-track-container">
+        <div class="roulette-track" id="roulette-track"></div>
+      </div>
+    </div>
+
+    <!-- Botões de abrir -->
+    <div class="open-controls">
+      <button class="open-btn" id="open-btn">🔓 ABRIR CASE</button>
+      <button class="open-btn" id="multi-btn" style="background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);">🔓 ×10</button>
+    </div>
+
+    <!-- Conteúdo da case -->
+    <div class="case-contents">
+      <h3>Itens nesta case</h3>
+      <div class="contents-grid" id="contents-grid"></div>
+    </div>
+  </section>
+
+  <!-- PAGE: INVENTORY -->
+  <section class="page" id="page-inventory">
+    <h1 class="page-title">Meu Inventário</h1>
+    <p class="page-subtitle">Todos os itens guardados das suas aberturas.</p>
+    <div class="inventory-stats">
+      <div class="stat-box">
+        <div class="stat-label">Total de Itens</div>
+        <div class="stat-value" id="inv-total">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label" style="color:#eb4b4b">Raros+</div>
+        <div class="stat-value" style="color:#eb4b4b" id="inv-rare">0</div>
+      </div>
+    </div>
+    <div class="inventory-grid" id="inventory-grid">
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="64" height="64">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/>
+        </svg>
+        <p>Inventário vazio</p><small>Abra algumas cases para começar!</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE: HISTORY -->
+  <section class="page" id="page-history">
+    <h1 class="page-title">Histórico & Estatísticas</h1>
+    <p class="page-subtitle">Acompanhe seu progresso e todos os itens obtidos.</p>
+
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-label">Cases Abertas</div>
+        <div class="stat-value" id="h-total">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Total Gasto</div>
+        <div class="stat-value" style="color:var(--coin)" id="h-spent">$0.00</div>
+      </div>
+    </div>
+
+    <div id="best-drop-section"></div>
+
+    <div class="rarity-bar-chart" id="rarity-bar-chart"></div>
+
+    <h3 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:0.75rem;">
+      Últimas Aberturas
+    </h3>
+    <div class="history-list" id="history-list">
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+          <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <p>Nenhuma abertura ainda</p><small>Abra uma case para começar o histórico</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: ITEM GANHO (1x) -->
+  <div class="modal-overlay" id="won-overlay">
+    <div class="won-card">
+      <div class="won-rarity-bar" id="won-rarity-bar"></div>
+      <div class="won-label">Você ganhou</div>
+      <img class="won-image" id="won-image" src="" alt="item">
+      <div class="won-name" id="won-name"></div>
+      <span class="won-rarity-tag" id="won-rarity-tag"></span>
+      <div class="won-wear" id="won-wear"></div>
+      <div class="won-actions">
+        <button class="btn-open-again" id="btn-open-again">🔄 Abrir Novamente</button>
+        <button class="btn-keep" id="btn-keep">✓ Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: MULTI-OPEN (10x) -->
+  <div class="multi-overlay" id="multi-overlay">
+    <div class="multi-container">
+      <h2>🎁 10 Cases Abertas</h2>
+      <div class="multi-grid" id="multi-grid"></div>
+      <div class="multi-summary" id="multi-summary" style="opacity:0;transition:opacity 0.4s"></div>
+      <div class="multi-actions">
+        <button class="multi-close-btn" id="multi-close-btn">Descartar</button>
+        <button class="multi-keep open-btn multi-keep" id="multi-keep-all">✓ Guardar Todos</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH OVERLAY -->
+  <div class="auth-overlay" id="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <svg viewBox="0 0 28 28" fill="none" width="36" height="36">
+          <rect width="28" height="28" rx="6" fill="#f0a500" opacity="0.15"/>
+          <path d="M7 14L14 7L21 14L14 21L7 14Z" fill="#f0a500"/>
+          <path d="M11 14L14 11L17 14L14 17L11 14Z" fill="#0f0f13"/>
+        </svg>
+        <span>CS2 Simulator</span>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login">Entrar</button>
+        <button class="auth-tab" id="tab-register">Cadastrar</button>
+      </div>
+
+      <form class="auth-form" id="auth-form">
+        <div class="auth-field" id="username-field" style="display:none">
+          <label>Nome de usuário</label>
+          <input type="text" id="auth-username" placeholder="Seu username" autocomplete="username">
+        </div>
+        <div class="auth-field">
+          <label>Email</label>
+          <input type="email" id="auth-email" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+        <div class="auth-field">
+          <label>Senha</label>
+          <input type="password" id="auth-password" placeholder="Mínimo 6 caracteres" required autocomplete="current-password">
+        </div>
+
+        <div class="auth-error" id="auth-error"></div>
+        <div class="auth-success" id="auth-success"></div>
+
+        <button type="submit" class="auth-submit" id="auth-submit">Entrar</button>
+      </form>
+
+      <div class="auth-divider"><span>ou</span></div>
+
+      <button class="auth-github" id="auth-github-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        Continuar com GitHub
+      </button>
+    </div>
+  </div>
+
+  <!-- TOASTS -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
