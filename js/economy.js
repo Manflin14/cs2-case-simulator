@@ -26,6 +26,3 @@ function dispatchBalanceEvent(balance) {
   window.dispatchEvent(new CustomEvent('balance-update', { detail: { balance } }));
 }
 
-export function formatBalance(amount) {
-  return amount.toFixed(2);
-}

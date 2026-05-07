@@ -1,4 +1,4 @@
-import { supabase } from './supabase.js?v=3';
+import { supabase } from './supabase.js?v=4';
 
 // ===== LOGIN COM EMAIL =====
 export async function signIn(email, password) {

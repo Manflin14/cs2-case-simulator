@@ -1,18 +1,17 @@
-import { loadCases, rollItem, generateRouletteItems } from './data.js?v=3';
-import { getBalance, setBalance, spend, addFunds } from './economy.js?v=3';
-import { getInventory, addToInventory } from './inventory.js?v=3';
-import { recordOpening, getHistory, getStats } from './history.js?v=3';
-import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=3';
-import { supabase } from './supabase.js?v=3';
-import { signIn, signUp, signInWithGitHub, signOut, onAuthChange, loadProfile, saveBalance } from './auth.js?v=3';
-import { loadInventory, saveInventoryItem, loadHistory, saveHistoryEntry, migrateLocalData } from './cloud.js?v=3';
+import { loadCases, rollItem, generateRouletteItems } from './data.js?v=4';
+import { getBalance, setBalance, spend, addFunds } from './economy.js?v=4';
+import { getInventory, addToInventory } from './inventory.js?v=4';
+import { recordOpening, getHistory, getStats } from './history.js?v=4';
+import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=4';
+import { signIn, signUp, signInWithGitHub, signOut, onAuthChange, loadProfile, saveBalance } from './auth.js?v=4';
+import { loadInventory, saveInventoryItem, loadHistory, saveHistoryEntry, migrateLocalData } from './cloud.js?v=4';
 import {
   showToast, navigate, updateWalletUI,
   renderCasesGrid, renderOpeningPage,
   buildRouletteTrack, animateRoulette,
   showWonModal, showMultiModal,
   renderInventory, renderHistory,
-} from './ui.js?v=3';
+} from './ui.js?v=4';
 
 let cases = [];
 let currentCase = null;
@@ -280,7 +279,17 @@ async function openSingle() {
   const sequence = generateRouletteItems(currentCase.items, wonItem);
   const WIN_INDEX = 48;
 
-  buildRouletteTrack(sequence);
+  try {
+    buildRouletteTrack(sequence);
+  } catch (err) {
+    console.error('Erro ao construir roleta:', err);
+    isSpinning = false;
+    document.getElementById('open-btn').disabled = false;
+    document.getElementById('multi-btn').disabled = false;
+    showToast('Erro ao abrir case. Tente novamente.', 'error');
+    return;
+  }
+
   await new Promise(r => setTimeout(r, 60));
 
   const DURATION = 5500;
@@ -320,10 +329,12 @@ async function openSingle() {
           // Abrir novamente
           addToInventory(wonItem);
           if (currentUser) {
+            setSyncState('syncing');
             await Promise.all([
               saveInventoryItem(currentUser.id, wonItem),
               saveHistoryEntry(currentUser.id, currentCase, wonItem),
             ]).catch(console.error);
+            setSyncState('online');
           } else {
             recordOpening(currentCase, wonItem);
           }
