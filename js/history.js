@@ -21,21 +21,24 @@ export function getHistory() {
   catch { return []; }
 }
 
-export function getStats() {
-  const h = getHistory();
+export function computeStats(h) {
   if (!h.length) return null;
 
-  const totalSpent    = h.reduce((s, e) => s + e.price, 0);
-  const byRarity      = {};
-  let bestItem = null;
-  const rarityOrder   = ['gold','covert','classified','restricted','milspec'];
+  const totalSpent  = h.reduce((s, e) => s + e.price, 0);
+  const byRarity    = {};
+  let bestItem      = null;
+  const rarityOrder = ['gold','covert','classified','restricted','milspec'];
 
   h.forEach(e => {
     byRarity[e.item.rarity] = (byRarity[e.item.rarity] || 0) + 1;
-    const cur = rarityOrder.indexOf(e.item.rarity);
+    const cur  = rarityOrder.indexOf(e.item.rarity);
     const best = bestItem ? rarityOrder.indexOf(bestItem.rarity) : 99;
     if (cur < best) bestItem = e.item;
   });
 
   return { total: h.length, totalSpent, byRarity, bestItem };
+}
+
+export function getStats() {
+  return computeStats(getHistory());
 }

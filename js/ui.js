@@ -1,5 +1,13 @@
 import { RARITY_NAMES, RARITY_COLORS, WEAR_NAMES } from './data.js?v=4';
 
+function placeholder(w, h, text = '?', bg = '#16161d') {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" fill="${bg}"/><text x="${Math.round(w/2)}" y="${Math.round(h/2)+5}" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7878a0">${text}</text></svg>`;
+  return `data:image/svg+xml;base64,${btoa(svg)}`;
+}
+
+const SKIN_PH = placeholder(100, 70);
+const CASE_PH = placeholder(140, 140, 'CASE', '#1c1c26');
+
 // ===== TOAST =====
 export function showToast(message, type = 'success') {
   const container = document.getElementById('toast-container');
@@ -31,7 +39,7 @@ export function renderCasesGrid(cases, onOpen) {
   grid.innerHTML = cases.map(c => `
     <div class="case-card" data-id="${c.id}">
       <img class="case-image" src="${c.image}" alt="${c.name}"
-           onerror="this.src='https://via.placeholder.com/140x140/1c1c26/7878a0?text=CASE'">
+           onerror="this.onerror=null;this.src='${CASE_PH}'">
       <div class="case-name">${c.name}</div>
       <div class="case-price">
         <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14">
@@ -59,7 +67,7 @@ export function renderOpeningPage(caseData) {
   grid.innerHTML = caseData.items.map(item => `
     <div class="content-item" data-rarity="${item.rarity}">
       <img src="${item.image}" alt="${item.name}"
-           onerror="this.src='https://via.placeholder.com/90x64/16161d/7878a0?text=SKIN'">
+           onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="ci-name">${item.name}</div>
       <div class="ci-rarity" data-rarity="${item.rarity}">${RARITY_NAMES[item.rarity] || item.rarity}</div>
     </div>
@@ -74,7 +82,7 @@ export function buildRouletteTrack(items) {
   track.innerHTML = items.map(item => `
     <div class="roulette-item" data-rarity="${item.rarity}">
       <img src="${item.image}" alt="${item.name}"
-           onerror="this.src='https://via.placeholder.com/100x70/16161d/7878a0?text=?'">
+           onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="item-name">${item.name}</div>
     </div>
   `).join('');
@@ -130,7 +138,7 @@ export function showMultiModal(items, onKeepAll, onClose) {
         <div class="flip-front">🎁</div>
         <div class="flip-back" data-rarity="${item.rarity}">
           <img src="${item.image}" alt="${item.name}"
-               onerror="this.src='https://via.placeholder.com/90x60/16161d/7878a0?text=?'">
+               onerror="this.onerror=null;this.src='${SKIN_PH}'">
           <div class="fb-name">${item.name}</div>
         </div>
       </div>
@@ -190,7 +198,7 @@ export function renderInventory(inventory) {
   grid.innerHTML = inventory.map(item => `
     <div class="inv-item" data-rarity="${item.rarity}">
       <img src="${item.image}" alt="${item.name}"
-           onerror="this.src='https://via.placeholder.com/100x70/16161d/7878a0?text=SKIN'">
+           onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="inv-name">${item.name}</div>
       <div class="inv-rarity" style="color:${RARITY_COLORS[item.rarity]}">${RARITY_NAMES[item.rarity] || item.rarity}</div>
       <div class="inv-wear">${WEAR_NAMES[item.wear] || item.wear || ''}</div>
@@ -211,7 +219,7 @@ export function renderHistory(history, stats) {
     const color = RARITY_COLORS[b.rarity];
     bestSection.innerHTML = `
       <div class="best-drop" style="border-color:${color}44">
-        <img src="${b.image}" alt="${b.name}" onerror="this.src='https://via.placeholder.com/80x56/16161d/7878a0?text=?'">
+        <img src="${b.image}" alt="${b.name}" onerror="this.onerror=null;this.src='${SKIN_PH}'">
         <div class="best-drop-info">
           <small>🏆 Melhor Drop</small>
           <strong style="color:${color}">${b.name}</strong>
@@ -262,7 +270,7 @@ export function renderHistory(history, stats) {
     return `
       <div class="history-row" data-rarity="${entry.item.rarity}">
         <img src="${entry.item.image}" alt="${entry.item.name}"
-             onerror="this.src='https://via.placeholder.com/64x44/16161d/7878a0?text=?'">
+             onerror="this.onerror=null;this.src='${SKIN_PH}'">
         <div>
           <div class="hr-name">${entry.item.name}</div>
           <div class="hr-meta" style="color:${color}">${RARITY_NAMES[entry.item.rarity] || entry.item.rarity} • ${WEAR_NAMES[entry.item.wear] || entry.item.wear || ''}</div>

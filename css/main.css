@@ -660,7 +660,7 @@ body {
   margin-bottom: 1.5rem;
 }
 .auth-logo svg { width: 48px; height: 48px; }
-.auth-logo h1 { font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-top: 8px; }
+.auth-logo h1 { font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-top: 8px; display: block; }
 .auth-logo p  { color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; }
 
 .auth-tabs {

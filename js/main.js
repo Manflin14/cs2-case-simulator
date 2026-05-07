@@ -1,7 +1,7 @@
 import { loadCases, rollItem, generateRouletteItems } from './data.js?v=4';
 import { getBalance, setBalance, spend, addFunds } from './economy.js?v=4';
 import { getInventory, addToInventory } from './inventory.js?v=4';
-import { recordOpening, getHistory, getStats } from './history.js?v=4';
+import { recordOpening, getHistory, getStats, computeStats } from './history.js?v=4';
 import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=4';
 import { signIn, signUp, signInWithGitHub, signOut, onAuthChange, loadProfile, saveBalance } from './auth.js?v=4';
 import { loadInventory, saveInventoryItem, loadHistory, saveHistoryEntry, migrateLocalData } from './cloud.js?v=4';
@@ -198,7 +198,7 @@ function setupNavigation() {
         const hist = currentUser
           ? await loadHistory(currentUser.id).catch(() => getHistory())
           : getHistory();
-        renderHistory(hist, getStats());
+        renderHistory(hist, computeStats(hist));
       }
     });
   });
