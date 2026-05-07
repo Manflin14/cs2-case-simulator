@@ -1,4 +1,4 @@
-import { supabase } from './supabase.js';
+import { supabase } from './supabase.js?v=3';
 
 // ===== INVENTÁRIO =====
 export async function loadInventory(userId) {

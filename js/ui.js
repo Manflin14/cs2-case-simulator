@@ -1,4 +1,4 @@
-import { RARITY_NAMES, RARITY_COLORS, WEAR_NAMES } from './data.js';
+import { RARITY_NAMES, RARITY_COLORS, WEAR_NAMES } from './data.js?v=3';
 
 // ===== TOAST =====
 export function showToast(message, type = 'success') {

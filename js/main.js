@@ -1,18 +1,18 @@
-import { loadCases, rollItem, generateRouletteItems } from './data.js';
-import { getBalance, setBalance, spend, addFunds } from './economy.js';
-import { getInventory, addToInventory } from './inventory.js';
-import { recordOpening, getHistory, getStats } from './history.js';
-import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js';
-import { supabase } from './supabase.js';
-import { signIn, signUp, signInWithGitHub, signOut, onAuthChange, loadProfile, saveBalance } from './auth.js';
-import { loadInventory, saveInventoryItem, loadHistory, saveHistoryEntry, migrateLocalData } from './cloud.js';
+import { loadCases, rollItem, generateRouletteItems } from './data.js?v=3';
+import { getBalance, setBalance, spend, addFunds } from './economy.js?v=3';
+import { getInventory, addToInventory } from './inventory.js?v=3';
+import { recordOpening, getHistory, getStats } from './history.js?v=3';
+import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=3';
+import { supabase } from './supabase.js?v=3';
+import { signIn, signUp, signInWithGitHub, signOut, onAuthChange, loadProfile, saveBalance } from './auth.js?v=3';
+import { loadInventory, saveInventoryItem, loadHistory, saveHistoryEntry, migrateLocalData } from './cloud.js?v=3';
 import {
   showToast, navigate, updateWalletUI,
   renderCasesGrid, renderOpeningPage,
   buildRouletteTrack, animateRoulette,
   showWonModal, showMultiModal,
   renderInventory, renderHistory,
-} from './ui.js';
+} from './ui.js?v=3';
 
 let cases = [];
 let currentCase = null;
@@ -24,23 +24,31 @@ const REDIRECT_URL = window.location.origin + window.location.pathname;
 
 // ===== INIT =====
 async function init() {
-  cases = await loadCases();
+  try {
+    cases = await loadCases();
 
-  setupAuthModal();
-  setupNavigation();
-  setupWallet();
+    setupAuthModal();
+    setupNavigation();
+    setupWallet();
 
-  // Escutar mudanças de sessão
-  onAuthChange(async (user) => {
-    currentUser = user;
-    if (user) {
-      await onLogin(user);
-    } else {
-      onLogout();
+    onAuthChange(async (user) => {
+      currentUser = user;
+      if (user) {
+        await onLogin(user);
+      } else {
+        onLogout();
+      }
+    });
+
+    renderCasesGrid(cases, onCaseSelected);
+  } catch (err) {
+    console.error('Erro ao inicializar:', err);
+    const errorEl = document.getElementById('auth-error');
+    if (errorEl) {
+      errorEl.textContent = 'Erro ao carregar o jogo. Tente recarregar a página.';
+      errorEl.classList.add('show');
     }
-  });
-
-  renderCasesGrid(cases, onCaseSelected);
+  }
 }
 
 // ===== AUTH: onLogin =====
