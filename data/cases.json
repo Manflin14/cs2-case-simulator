@@ -3,7 +3,7 @@
     {
       "id": "revolution",
       "name": "Revolution Case",
-      "image": "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFYwnfKeTj9Q7ojiwoaKxfanNrqExz5SsBFh9KP3oYn3iwzh_UVqZmigdteLMlhpAD8/256fx256f",
+      "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnAVvfb6aqduc_TFVjTCxbx05OU4S3jilE9w4DzRnImtIy2Sa1JzDJEhRPlK7EcO4U8gfA/256fx256f",
       "price": 2.50,
       "items": [
         { "id": "ak47_inheritance", "name": "AK-47 | Inheritance", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPr_DLjZ2zoI6sQlj7-TpdziiVC3807aZjulJYRoMA/360fx360f" },
@@ -22,7 +22,7 @@
     {
       "id": "kilowatt",
       "name": "Kilowatt Case",
-      "image": "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFc2naefIj9Q7ojiwoaKxfanNrqDkDgBuJRz3byUoo-s3wzu_ks5MWj1dI-RdlQ/256fx256f",
+      "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnEVvqf_a6VoIfGSXz7Hlbwg57QwSS_mxhl15jiGyN37c3_GZw91W8BwRflK7EfKsa2sfw/256fx256f",
       "price": 3.00,
       "items": [
         { "id": "ak47_vulcan", "name": "AK-47 | Vulcan", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPLmMr-3m2pf4sR0j-jTpamh2Qa3-kJpYmj7ddSLMlho/360fx360f" },
@@ -39,7 +39,7 @@
     {
       "id": "dreams_nightmares",
       "name": "Dreams & Nightmares",
-      "image": "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFYwn6KeTj9Q7ojiwoaKxfanNrqExjhSvNUljLqVpd6t3Qfj_ks5YTr2cI-dd1hpBlwT4g/256fx256f",
+      "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnIV7Kb5OaU-JqfHDzXFle0u4LY8Gy_kkRgisGzcm4v4J3vDOAQmDMdyRvlK7EcmeCU3yw/256fx256f",
       "price": 1.80,
       "items": [
         { "id": "ak47_nightwish", "name": "AK-47 | Nightwish", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPLmMr-3m2pf4sR0j-jT_d2k3FHh-0prZmj7dNTC/360fx360f" },

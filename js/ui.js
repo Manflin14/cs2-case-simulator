@@ -1,5 +1,5 @@
 import { RARITY_NAMES, RARITY_COLORS, WEAR_NAMES } from './data.js?v=5';
-import { loadItemImages, getSteamImage } from './steam-images.js?v=1';
+import { loadItemImages, getSteamImage } from './steam-images.js?v=2';
 
 function placeholder(w, h, text = '?', bg = '#16161d') {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" fill="${bg}"/><text x="${Math.round(w/2)}" y="${Math.round(h/2)+5}" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7878a0">${text}</text></svg>`;
@@ -39,7 +39,7 @@ export function renderCasesGrid(cases, onOpen) {
   const grid = document.getElementById('cases-grid');
   grid.innerHTML = cases.map(c => `
     <div class="case-card" data-id="${c.id}">
-      <img class="case-image" src="${c.image}" alt="${c.name}"
+      <img class="case-image" src="${c.image}" alt="${c.name}" data-item-name="${c.name}"
            onerror="this.onerror=null;this.src='${CASE_PH}'">
       <div class="case-name">${c.name}</div>
       <div class="case-price">
@@ -54,6 +54,7 @@ export function renderCasesGrid(cases, onOpen) {
   grid.querySelectorAll('.case-btn').forEach((btn, i) => {
     btn.addEventListener('click', () => onOpen(cases[i]));
   });
+  loadItemImages(grid);
 }
 
 // ===== OPENING PAGE =====
@@ -67,8 +68,7 @@ export function renderOpeningPage(caseData) {
   const grid = document.getElementById('contents-grid');
   grid.innerHTML = caseData.items.map(item => `
     <div class="content-item" data-rarity="${item.rarity}">
-      <img src="${item.image}" alt="${item.name}" data-item-name="${item.name}"
-           onerror="this.onerror=null;this.src='${SKIN_PH}'">
+      <img src="${SKIN_PH}" alt="${item.name}" data-item-name="${item.name}">
       <div class="ci-name">${item.name}</div>
       <div class="ci-rarity" data-rarity="${item.rarity}">${RARITY_NAMES[item.rarity] || item.rarity}</div>
     </div>
@@ -84,8 +84,7 @@ export function buildRouletteTrack(items) {
   track.style.transform = 'translateX(0)';
   track.innerHTML = items.map(item => `
     <div class="roulette-item" data-rarity="${item.rarity}">
-      <img src="${item.image}" alt="${item.name}" data-item-name="${item.name}"
-           onerror="this.onerror=null;this.src='${SKIN_PH}'">
+      <img src="${SKIN_PH}" alt="${item.name}" data-item-name="${item.name}">
       <div class="item-name">${item.name}</div>
     </div>
   `).join('');
@@ -117,9 +116,8 @@ export function showWonModal(item, onKeep, onOpenAgain) {
   document.getElementById('won-rarity-bar').style.background = color;
 
   const wonImg = document.getElementById('won-image');
-  wonImg.src = item.image;
+  wonImg.src = SKIN_PH;
   wonImg.dataset.itemName = item.name;
-  wonImg.onerror = () => { wonImg.onerror = null; wonImg.src = SKIN_PH; };
 
   getSteamImage(item.name).then(url => {
     if (url && wonImg.isConnected) wonImg.src = url;
@@ -149,8 +147,7 @@ export function showMultiModal(items, onKeepAll, onClose) {
       <div class="flip-card-inner">
         <div class="flip-front">🎁</div>
         <div class="flip-back" data-rarity="${item.rarity}">
-          <img src="${item.image}" alt="${item.name}" data-item-name="${item.name}"
-               onerror="this.onerror=null;this.src='${SKIN_PH}'">
+          <img src="${SKIN_PH}" alt="${item.name}" data-item-name="${item.name}">
           <div class="fb-name">${item.name}</div>
         </div>
       </div>
@@ -208,8 +205,7 @@ export function renderInventory(inventory) {
 
   grid.innerHTML = inventory.map(item => `
     <div class="inv-item" data-rarity="${item.rarity}">
-      <img src="${item.image}" alt="${item.name}" data-item-name="${item.name}"
-           onerror="this.onerror=null;this.src='${SKIN_PH}'">
+      <img src="${SKIN_PH}" alt="${item.name}" data-item-name="${item.name}">
       <div class="inv-name">${item.name}</div>
       <div class="inv-rarity" style="color:${RARITY_COLORS[item.rarity]}">${RARITY_NAMES[item.rarity] || item.rarity}</div>
       <div class="inv-wear">${WEAR_NAMES[item.wear] || item.wear || ''}</div>
@@ -230,8 +226,7 @@ export function renderHistory(history, stats) {
     const color = RARITY_COLORS[b.rarity];
     bestSection.innerHTML = `
       <div class="best-drop" style="border-color:${color}44">
-        <img src="${b.image}" alt="${b.name}" data-item-name="${b.name}"
-             onerror="this.onerror=null;this.src='${SKIN_PH}'">
+        <img src="${SKIN_PH}" alt="${b.name}" data-item-name="${b.name}">
         <div class="best-drop-info">
           <small>🏆 Melhor Drop</small>
           <strong style="color:${color}">${b.name}</strong>
@@ -280,8 +275,7 @@ export function renderHistory(history, stats) {
     const timeStr = date.toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
     return `
       <div class="history-row" data-rarity="${entry.item.rarity}">
-        <img src="${entry.item.image}" alt="${entry.item.name}" data-item-name="${entry.item.name}"
-             onerror="this.onerror=null;this.src='${SKIN_PH}'">
+        <img src="${SKIN_PH}" alt="${entry.item.name}" data-item-name="${entry.item.name}">
         <div>
           <div class="hr-name">${entry.item.name}</div>
           <div class="hr-meta" style="color:${color}">${RARITY_NAMES[entry.item.rarity] || entry.item.rarity} • ${WEAR_NAMES[entry.item.wear] || entry.item.wear || ''}</div>

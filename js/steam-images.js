@@ -1,7 +1,7 @@
 // Cache em memória + sessionStorage para evitar requests repetidos
 const mem = new Map();
 const PRE = 'si3_';
-const CDN = 'https://community.cloudflare.steamstatic.com/economy/image/';
+const CDN = 'https://community.fastly.steamstatic.com/public/economy/image/';
 
 const PROXIES = [
   u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
