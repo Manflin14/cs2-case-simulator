@@ -58,8 +58,8 @@ export async function getSteamImage(name) {
   return url;
 }
 
-// Atualiza todos os img[data-item-name] dentro de um elemento
-// Processa nomes únicos para não duplicar requests
+// Atualiza img[data-item-name] que ainda não têm imagem real carregada
+// Pula imagens que já têm src real (não é placeholder)
 export async function loadItemImages(el) {
   const imgs = [...el.querySelectorAll('img[data-item-name]')];
   const seen = new Set();
@@ -67,12 +67,17 @@ export async function loadItemImages(el) {
   for (const img of imgs) {
     const name = img.dataset.itemName;
     if (!name || seen.has(name)) continue;
+
+    // Pular se já tem uma URL real (não é data URI de placeholder)
+    if (img.src && !img.src.startsWith('data:')) { seen.add(name); continue; }
     seen.add(name);
 
     getSteamImage(name).then(url => {
       if (!url) return;
       el.querySelectorAll('img[data-item-name]').forEach(i => {
-        if (i.dataset.itemName === name && i.isConnected) i.src = url;
+        if (i.dataset.itemName === name && i.isConnected && (!i.src || i.src.startsWith('data:'))) {
+          i.src = url;
+        }
       });
     }).catch(() => {});
   }

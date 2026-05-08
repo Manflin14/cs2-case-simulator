@@ -1,7 +1,8 @@
 import { RARITY_NAMES, RARITY_COLORS, WEAR_NAMES, SELL_PRICES } from './data.js?v=6';
-import { loadItemImages, getSteamImage } from './steam-images.js?v=2';
+import { loadItemImages, getSteamImage } from './steam-images.js?v=3';
 import { getRankInfo } from './ranks.js?v=6';
 import { ACHIEVEMENTS } from './rewards.js?v=6';
+import { getMarketPrice, marketUrl } from './steam-prices.js?v=1';
 
 // ===== PLACEHOLDER =====
 function placeholder(w, h, text = '?', bg = '#16161d') {
@@ -103,7 +104,8 @@ export function renderOpeningPage(caseData) {
   const grid = document.getElementById('contents-grid');
   grid.innerHTML = caseData.items.map(item => `
     <div class="content-item" data-rarity="${item.rarity}">
-      <img src="${SKIN_PH}" alt="" data-item-name="${item.name}">
+      <img src="${item.image || SKIN_PH}" alt="" data-item-name="${item.name}"
+           onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="ci-name">${item.name}</div>
       <div class="ci-rarity" data-rarity="${item.rarity}">${RARITY_NAMES[item.rarity] || item.rarity}</div>
     </div>
@@ -118,7 +120,8 @@ export function buildRouletteTrack(items) {
   track.style.transform  = 'translateX(0)';
   track.innerHTML = items.map(item => `
     <div class="roulette-item" data-rarity="${item.rarity}">
-      <img src="${SKIN_PH}" alt="" data-item-name="${item.name}">
+      <img src="${item.image || SKIN_PH}" alt="" data-item-name="${item.name}"
+           onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="item-name">${item.name}</div>
     </div>
   `).join('');
@@ -140,18 +143,20 @@ export function animateRoulette(winIndex, onComplete) {
   setTimeout(onComplete, duration + 100);
 }
 
-// ===== WON MODAL (1x) — com botão Vender =====
+// ===== WON MODAL (1x) — com botão Vender e preço real do Steam Market =====
 export function showWonModal(item, onKeep, onSell, onOpenAgain) {
   const overlay = document.getElementById('won-overlay');
   const color   = RARITY_COLORS[item.rarity] || '#fff';
-  const price   = SELL_PRICES[item.rarity] ?? 0;
 
   document.getElementById('won-rarity-bar').style.background = color;
 
   const wonImg = document.getElementById('won-image');
-  wonImg.src = SKIN_PH;
+  wonImg.src = item.image || SKIN_PH;
   wonImg.dataset.itemName = item.name;
-  getSteamImage(item.name).then(url => { if (url && wonImg.isConnected) wonImg.src = url; }).catch(() => {});
+  wonImg.onerror = () => {
+    wonImg.onerror = null;
+    getSteamImage(item.name).then(url => { if (url && wonImg.isConnected) wonImg.src = url; }).catch(() => {});
+  };
 
   document.getElementById('won-name').textContent = item.name;
   document.getElementById('won-wear').textContent = WEAR_NAMES[item.wear] || item.wear;
@@ -162,10 +167,29 @@ export function showWonModal(item, onKeep, onSell, onOpenAgain) {
 
   overlay.querySelector('.won-card').style.boxShadow = `0 0 40px ${color}33`;
 
-  const sellBtn = document.getElementById('btn-sell');
-  if (sellBtn) {
-    sellBtn.textContent = price > 0 ? `💰 Vender ($${price.toFixed(2)})` : '💰 Vender';
+  // Botão de link para o mercado Steam
+  let marketLinkEl = document.getElementById('won-market-link');
+  if (!marketLinkEl) {
+    marketLinkEl = document.createElement('a');
+    marketLinkEl.id        = 'won-market-link';
+    marketLinkEl.target    = '_blank';
+    marketLinkEl.rel       = 'noopener noreferrer';
+    marketLinkEl.className = 'won-market-link';
+    marketLinkEl.textContent = '🔗 Ver no Steam Market';
+    const nameEl = document.getElementById('won-name');
+    if (nameEl?.parentNode) nameEl.parentNode.insertBefore(marketLinkEl, nameEl.nextSibling);
   }
+  marketLinkEl.href = marketUrl(item.name, item.wear);
+
+  // Preço: mostra fallback por raridade e atualiza com preço real
+  const fallback = SELL_PRICES[item.rarity] ?? 0;
+  const sellBtn  = document.getElementById('btn-sell');
+  if (sellBtn) sellBtn.textContent = fallback > 0 ? `💰 Vender ($${fallback.toFixed(2)})` : '💰 Vender';
+
+  getMarketPrice(item.name, item.wear).then(mp => {
+    if (mp === null) return;
+    if (sellBtn && sellBtn.isConnected) sellBtn.textContent = `💰 Vender ($${mp.toFixed(2)})`;
+  }).catch(() => {});
 
   overlay.classList.add('show');
 
@@ -184,7 +208,8 @@ export function showMultiModal(items, onKeepAll, onSellAll, onClose) {
       <div class="flip-card-inner">
         <div class="flip-front">🎁</div>
         <div class="flip-back" data-rarity="${item.rarity}">
-          <img src="${SKIN_PH}" alt="" data-item-name="${item.name}">
+          <img src="${item.image || SKIN_PH}" alt="" data-item-name="${item.name}"
+               onerror="this.onerror=null;this.src='${SKIN_PH}'">
           <div class="fb-name">${item.name}</div>
         </div>
       </div>
@@ -212,10 +237,17 @@ export function showMultiModal(items, onKeepAll, onSellAll, onClose) {
       });
     summary.style.opacity = '1';
 
-    // Atualizar texto do botão vender com valor total
-    const totalSell = items.reduce((s, i) => s + (SELL_PRICES[i.rarity]||0), 0);
+    // Mostrar total com preços reais do Steam Market (fallback: raridade)
     const sellAllBtn = document.getElementById('multi-sell-all');
-    if (sellAllBtn) sellAllBtn.textContent = `💰 Vender Tudo ($${totalSell.toFixed(2)})`;
+    const fallbackTotal = items.reduce((s, i) => s + (SELL_PRICES[i.rarity]||0), 0);
+    if (sellAllBtn) sellAllBtn.textContent = `💰 Vender Tudo ($${fallbackTotal.toFixed(2)})`;
+
+    Promise.all(items.map(i => getMarketPrice(i.name, i.wear).catch(() => null))).then(prices => {
+      const realTotal = items.reduce((s, item, idx) => s + (prices[idx] ?? SELL_PRICES[item.rarity] ?? 0), 0);
+      if (sellAllBtn && sellAllBtn.isConnected) {
+        sellAllBtn.textContent = `💰 Vender Tudo ($${realTotal.toFixed(2)})`;
+      }
+    });
   }, totalDelay);
 
   document.getElementById('multi-keep-all').onclick  = () => { overlay.classList.remove('show'); onKeepAll(); };
@@ -243,16 +275,28 @@ export function renderInventory(inventory, onSell) {
   }
 
   grid.innerHTML = inventory.map(item => {
-    const price = SELL_PRICES[item.rarity] ?? 0;
+    const fallback = SELL_PRICES[item.rarity] ?? 0;
     return `
     <div class="inv-item" data-rarity="${item.rarity}" data-id="${item.id}">
-      <img src="${SKIN_PH}" alt="" data-item-name="${item.name}">
+      <a class="inv-market-link" href="${marketUrl(item.name, item.wear)}" target="_blank" rel="noopener noreferrer" title="Ver no Steam Market">
+        <img src="${item.image || SKIN_PH}" alt="" data-item-name="${item.name}"
+             onerror="this.onerror=null;this.src='${SKIN_PH}'">
+      </a>
       <div class="inv-name">${item.name}</div>
       <div class="inv-rarity" style="color:${RARITY_COLORS[item.rarity]}">${RARITY_NAMES[item.rarity]||item.rarity}</div>
       <div class="inv-wear">${WEAR_NAMES[item.wear]||item.wear||''}</div>
-      <button class="inv-sell-btn" data-id="${item.id}">💰 $${price.toFixed(2)}</button>
+      <button class="inv-sell-btn" data-id="${item.id}">💰 $${fallback.toFixed(2)}</button>
     </div>`;
   }).join('');
+
+  // Carregar preços reais do Steam Market de forma assíncrona
+  inventory.forEach(item => {
+    getMarketPrice(item.name, item.wear).then(mp => {
+      if (mp === null) return;
+      const btn = grid.querySelector(`.inv-sell-btn[data-id="${item.id}"]`);
+      if (btn) btn.textContent = `💰 $${mp.toFixed(2)}`;
+    }).catch(() => {});
+  });
 
   if (onSell) {
     grid.querySelectorAll('.inv-sell-btn').forEach(btn => {
@@ -278,7 +322,10 @@ export function renderHistory(history, stats) {
     const color = RARITY_COLORS[b.rarity];
     bestSection.innerHTML = `
       <div class="best-drop" style="border-color:${color}44">
-        <img src="${SKIN_PH}" alt="" data-item-name="${b.name}">
+        <a href="${marketUrl(b.name, b.wear)}" target="_blank" rel="noopener noreferrer" title="Ver no Steam Market">
+          <img src="${b.image || SKIN_PH}" alt="" data-item-name="${b.name}"
+               onerror="this.onerror=null;this.src='${SKIN_PH}'">
+        </a>
         <div class="best-drop-info">
           <small>🏆 Melhor Drop</small>
           <strong style="color:${color}">${b.name}</strong>
@@ -318,7 +365,10 @@ export function renderHistory(history, stats) {
     const timeStr = new Date(entry.ts).toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
     return `
     <div class="history-row" data-rarity="${entry.item.rarity}">
-      <img src="${SKIN_PH}" alt="" data-item-name="${entry.item.name}">
+      <a href="${marketUrl(entry.item.name, entry.item.wear)}" target="_blank" rel="noopener noreferrer" title="Ver no Steam Market">
+        <img src="${entry.item.image || SKIN_PH}" alt="" data-item-name="${entry.item.name}"
+             onerror="this.onerror=null;this.src='${SKIN_PH}'">
+      </a>
       <div>
         <div class="hr-name">${entry.item.name}</div>
         <div class="hr-meta" style="color:${color}">${RARITY_NAMES[entry.item.rarity]||entry.item.rarity} • ${WEAR_NAMES[entry.item.wear]||entry.item.wear||''}</div>
@@ -359,7 +409,8 @@ export function renderTradeupGrid(inventory, selectedIds, onToggle) {
     return `
     <div class="tradeup-item ${sel ? 'selected' : ''}" data-id="${item.id}" data-rarity="${item.rarity}">
       ${sel ? '<div class="tradeup-check">✓</div>' : ''}
-      <img src="${SKIN_PH}" alt="" data-item-name="${item.name}">
+      <img src="${item.image || SKIN_PH}" alt="" data-item-name="${item.name}"
+           onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="tu-name">${item.name}</div>
       <div class="tu-rarity" style="color:${color}">${RARITY_NAMES[item.rarity]||item.rarity}</div>
     </div>`;

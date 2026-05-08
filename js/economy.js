@@ -1,5 +1,6 @@
 import { supabase } from './supabase.js?v=4';
 import { SELL_PRICES } from './data.js?v=6';
+import { getMarketPrice } from './steam-prices.js?v=1';
 
 const STORAGE_KEY  = 'cs2sim_balance';
 const STARTING_BAL = 50.00;
@@ -51,9 +52,15 @@ export async function addFunds(amount) {
   return newBal;
 }
 
-// ===== VENDER ITEM — retorna preço obtido =====
+// ===== VENDER ITEM — usa preço real do Steam Market, com fallback por raridade =====
 export async function sellItem(item) {
-  const price = SELL_PRICES[item.rarity] ?? 0;
+  let price;
+  try {
+    const mp = await getMarketPrice(item.name, item.wear);
+    price = mp ?? SELL_PRICES[item.rarity] ?? 0;
+  } catch {
+    price = SELL_PRICES[item.rarity] ?? 0;
+  }
   if (price > 0) await addFunds(price);
   return price;
 }
