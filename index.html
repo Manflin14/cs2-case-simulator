@@ -23,6 +23,9 @@
       <a href="#" data-page="cases" class="active">Cases</a>
       <a href="#" data-page="inventory">Inventário</a>
       <a href="#" data-page="history">Histórico</a>
+      <a href="#" data-page="casino">Cassino</a>
+      <a href="#" data-page="tradeup">Contratos</a>
+      <a href="#" data-page="profile">Perfil</a>
     </div>
 
     <div id="nav-user-section"></div>
@@ -55,7 +58,6 @@
       <h2 style="font-size:1.15rem;font-weight:700;">Abrir Case</h2>
     </div>
 
-    <!-- Info da case -->
     <div class="opening-case-info">
       <img id="opening-case-img" src="" alt="case">
       <div>
@@ -70,7 +72,6 @@
       </div>
     </div>
 
-    <!-- Roleta -->
     <div class="roulette-wrapper">
       <div class="roulette-indicator"></div>
       <div class="roulette-track-container">
@@ -78,13 +79,11 @@
       </div>
     </div>
 
-    <!-- Botões de abrir -->
     <div class="open-controls">
       <button class="open-btn" id="open-btn">🔓 ABRIR CASE</button>
       <button class="open-btn" id="multi-btn" style="background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);">🔓 ×10</button>
     </div>
 
-    <!-- Conteúdo da case -->
     <div class="case-contents">
       <h3>Itens nesta case</h3>
       <div class="contents-grid" id="contents-grid"></div>
@@ -132,7 +131,6 @@
     </div>
 
     <div id="best-drop-section"></div>
-
     <div class="rarity-bar-chart" id="rarity-bar-chart"></div>
 
     <h3 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:0.75rem;">
@@ -148,6 +146,137 @@
     </div>
   </section>
 
+  <!-- PAGE: CASINO -->
+  <section class="page" id="page-casino">
+    <h1 class="page-title">Cassino</h1>
+    <p class="page-subtitle">Arrisque seu saldo nos jogos — Crash, Double e Coinflip.</p>
+
+    <div class="casino-tabs">
+      <button class="casino-tab active" data-game="crash">💥 Crash</button>
+      <button class="casino-tab" data-game="double">🎡 Double</button>
+      <button class="casino-tab" data-game="coinflip">🪙 Coinflip</button>
+    </div>
+
+    <!-- CRASH -->
+    <div class="casino-game" id="game-crash">
+      <div class="crash-panel">
+        <div class="crash-display">
+          <div class="crash-multiplier" id="crash-multiplier">1.00x</div>
+          <div class="crash-status" id="crash-status">Aguardando aposta...</div>
+        </div>
+        <div class="casino-controls">
+          <div class="casino-input-group">
+            <label>Aposta ($)</label>
+            <input type="number" id="crash-bet" min="0.01" step="0.01" value="1.00" placeholder="Valor da aposta">
+          </div>
+          <div class="casino-btn-group">
+            <button class="casino-btn casino-btn-primary" id="crash-start-btn">🚀 Apostar</button>
+            <button class="casino-btn casino-btn-cashout" id="crash-cashout-btn" disabled>💰 Cash Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOUBLE -->
+    <div class="casino-game" id="game-double" style="display:none">
+      <div class="double-panel">
+        <div class="double-track-wrapper">
+          <div class="double-track" id="double-track">
+            <div class="dt-slot dt-red"></div>
+            <div class="dt-slot dt-black"></div>
+            <div class="dt-slot dt-red"></div>
+            <div class="dt-slot dt-black"></div>
+            <div class="dt-slot dt-green"></div>
+            <div class="dt-slot dt-red"></div>
+            <div class="dt-slot dt-black"></div>
+            <div class="dt-slot dt-red"></div>
+            <div class="dt-slot dt-black"></div>
+            <div class="dt-slot dt-red"></div>
+            <div class="dt-slot dt-black"></div>
+            <div class="dt-slot dt-red"></div>
+            <div class="dt-slot dt-black"></div>
+            <div class="dt-slot dt-red"></div>
+            <div class="dt-slot dt-black"></div>
+          </div>
+        </div>
+        <div class="double-result" id="double-result" style="display:none"></div>
+        <div class="casino-controls">
+          <div class="casino-input-group">
+            <label>Aposta ($)</label>
+            <input type="number" id="double-bet" min="0.01" step="0.01" value="1.00" placeholder="Valor da aposta">
+          </div>
+          <div class="double-color-btns">
+            <button class="double-color-btn" data-color="red">🔴 Vermelho <span class="payout-badge">2×</span></button>
+            <button class="double-color-btn" data-color="black">⚫ Preto <span class="payout-badge">2×</span></button>
+            <button class="double-color-btn" data-color="green">💚 Verde <span class="payout-badge">14×</span></button>
+          </div>
+          <button class="casino-btn casino-btn-primary" id="double-spin-btn">🎡 Girar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- COINFLIP -->
+    <div class="casino-game" id="game-coinflip" style="display:none">
+      <div class="coinflip-panel">
+        <div class="coin-display" id="coin-display">🪙</div>
+        <div class="coinflip-result" id="coinflip-result"></div>
+        <div class="casino-controls">
+          <div class="casino-input-group">
+            <label>Aposta ($)</label>
+            <input type="number" id="coinflip-bet" min="0.01" step="0.01" value="1.00" placeholder="Valor da aposta">
+          </div>
+          <div class="coin-choice-btns">
+            <button class="coin-choice-btn" data-side="ct">🔵 CT</button>
+            <button class="coin-choice-btn" data-side="t">🟡 T</button>
+          </div>
+          <button class="casino-btn casino-btn-primary" id="coinflip-btn">🪙 Lançar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE: TRADE-UP -->
+  <section class="page" id="page-tradeup">
+    <h1 class="page-title">Contrato de Trade-Up</h1>
+    <p class="page-subtitle">Selecione 10 itens da mesma raridade para obter 1 item da raridade superior.</p>
+
+    <div class="tradeup-header">
+      <div class="tradeup-counter">
+        <span id="tradeup-count">0/10</span> itens selecionados
+      </div>
+      <button class="casino-btn casino-btn-primary" id="tradeup-execute-btn" disabled>
+        ⬆ Executar Contrato
+      </button>
+    </div>
+
+    <div class="tradeup-grid" id="tradeup-grid">
+      <div class="empty-state">
+        <p>Sem itens no inventário</p><small>Abra cases para obter itens!</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE: PROFILE -->
+  <section class="page" id="page-profile">
+    <h1 class="page-title">Perfil & Conquistas</h1>
+    <p class="page-subtitle">Seu progresso de rank e conquistas desbloqueadas.</p>
+
+    <div class="profile-rank-card" id="profile-rank-card">
+      <div class="rank-name">Recruta</div>
+      <div class="rank-xp">0 XP</div>
+      <div class="rank-bar-track">
+        <div class="rank-bar-fill" style="width:0%"></div>
+      </div>
+      <div class="rank-bar-labels">
+        <span>0 XP</span>
+        <span>500 XP</span>
+      </div>
+    </div>
+
+    <h3 class="section-heading">Conquistas</h3>
+    <div class="achievements-grid" id="achievements-grid"></div>
+  </section>
+
   <!-- MODAL: ITEM GANHO (1x) -->
   <div class="modal-overlay" id="won-overlay">
     <div class="won-card">
@@ -159,6 +288,7 @@
       <div class="won-wear" id="won-wear"></div>
       <div class="won-actions">
         <button class="btn-open-again" id="btn-open-again">🔄 Abrir Novamente</button>
+        <button class="btn-sell" id="btn-sell">💰 Vender</button>
         <button class="btn-keep" id="btn-keep">✓ Guardar</button>
       </div>
     </div>
@@ -172,7 +302,24 @@
       <div class="multi-summary" id="multi-summary" style="opacity:0;transition:opacity 0.4s"></div>
       <div class="multi-actions">
         <button class="multi-close-btn" id="multi-close-btn">Descartar</button>
+        <button class="open-btn multi-sell" id="multi-sell-all">💰 Vender Tudo</button>
         <button class="open-btn multi-keep" id="multi-keep-all">✓ Guardar Todos</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BÔNUS DIÁRIO -->
+  <div class="modal-overlay" id="daily-overlay">
+    <div class="daily-card">
+      <div class="daily-icon">🎁</div>
+      <div class="daily-title">Bônus Diário</div>
+      <div class="daily-subtitle">Volte todo dia para resgatar seu bônus!</div>
+      <div class="daily-amount-display">
+        <span id="daily-amount">$5.00</span>
+      </div>
+      <div class="daily-actions">
+        <button class="btn-keep" id="daily-claim-btn">✓ Resgatar</button>
+        <button class="btn-open-again" id="daily-skip-btn">Agora não</button>
       </div>
     </div>
   </div>
@@ -232,6 +379,6 @@
     window.SUPABASE_URL = 'https://ylnkvugcungcvscajung.supabase.co';
     window.SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlsbmt2dWdjdW5nY3ZzY2FqdW5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxODQ3NDIsImV4cCI6MjA5Mzc2MDc0Mn0.wEVTh7tpMLUNjXd76ANW2ukG7wCH4KTper6RmOptL-4';
   </script>
-  <script type="module" src="js/main.js?v=4"></script>
+  <script type="module" src="js/main.js?v=6"></script>
 </body>
 </html>
