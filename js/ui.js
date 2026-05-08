@@ -1,4 +1,5 @@
-import { RARITY_NAMES, RARITY_COLORS, WEAR_NAMES } from './data.js?v=4';
+import { RARITY_NAMES, RARITY_COLORS, WEAR_NAMES } from './data.js?v=5';
+import { loadItemImages, getSteamImage } from './steam-images.js?v=1';
 
 function placeholder(w, h, text = '?', bg = '#16161d') {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" fill="${bg}"/><text x="${Math.round(w/2)}" y="${Math.round(h/2)+5}" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7878a0">${text}</text></svg>`;
@@ -66,12 +67,14 @@ export function renderOpeningPage(caseData) {
   const grid = document.getElementById('contents-grid');
   grid.innerHTML = caseData.items.map(item => `
     <div class="content-item" data-rarity="${item.rarity}">
-      <img src="${item.image}" alt="${item.name}"
+      <img src="${item.image}" alt="${item.name}" data-item-name="${item.name}"
            onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="ci-name">${item.name}</div>
       <div class="ci-rarity" data-rarity="${item.rarity}">${RARITY_NAMES[item.rarity] || item.rarity}</div>
     </div>
   `).join('');
+
+  loadItemImages(grid);
 }
 
 // ===== ROULETTE =====
@@ -81,11 +84,13 @@ export function buildRouletteTrack(items) {
   track.style.transform = 'translateX(0)';
   track.innerHTML = items.map(item => `
     <div class="roulette-item" data-rarity="${item.rarity}">
-      <img src="${item.image}" alt="${item.name}"
+      <img src="${item.image}" alt="${item.name}" data-item-name="${item.name}"
            onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="item-name">${item.name}</div>
     </div>
   `).join('');
+
+  loadItemImages(track);
 }
 
 export function animateRoulette(winIndex, onComplete) {
@@ -97,7 +102,6 @@ export function animateRoulette(winIndex, onComplete) {
   const targetX = -(winIndex * itemWidth - centerOffset + jitter);
   const duration = 5500;
 
-  // Forçar reflow antes de aplicar a transição
   track.getBoundingClientRect();
   track.style.transition = `transform ${duration}ms cubic-bezier(0.12, 0.8, 0.4, 1)`;
   track.style.transform = `translateX(${targetX}px)`;
@@ -111,7 +115,16 @@ export function showWonModal(item, onKeep, onOpenAgain) {
   const color = RARITY_COLORS[item.rarity] || '#fff';
 
   document.getElementById('won-rarity-bar').style.background = color;
-  document.getElementById('won-image').src = item.image;
+
+  const wonImg = document.getElementById('won-image');
+  wonImg.src = item.image;
+  wonImg.dataset.itemName = item.name;
+  wonImg.onerror = () => { wonImg.onerror = null; wonImg.src = SKIN_PH; };
+
+  getSteamImage(item.name).then(url => {
+    if (url && wonImg.isConnected) wonImg.src = url;
+  }).catch(() => {});
+
   document.getElementById('won-name').textContent = item.name;
   document.getElementById('won-wear').textContent = WEAR_NAMES[item.wear] || item.wear;
 
@@ -131,13 +144,12 @@ export function showMultiModal(items, onKeepAll, onClose) {
   const overlay = document.getElementById('multi-overlay');
   const grid = document.getElementById('multi-grid');
 
-  // Montar cards virados para baixo
   grid.innerHTML = items.map((item, i) => `
     <div class="flip-card" id="flip-${i}">
       <div class="flip-card-inner">
         <div class="flip-front">🎁</div>
         <div class="flip-back" data-rarity="${item.rarity}">
-          <img src="${item.image}" alt="${item.name}"
+          <img src="${item.image}" alt="${item.name}" data-item-name="${item.name}"
                onerror="this.onerror=null;this.src='${SKIN_PH}'">
           <div class="fb-name">${item.name}</div>
         </div>
@@ -146,8 +158,8 @@ export function showMultiModal(items, onKeepAll, onClose) {
   `).join('');
 
   overlay.classList.add('show');
+  loadItemImages(grid);
 
-  // Flipar sequencialmente
   items.forEach((_, i) => {
     setTimeout(() => {
       const card = document.getElementById(`flip-${i}`);
@@ -155,7 +167,6 @@ export function showMultiModal(items, onKeepAll, onClose) {
     }, i * 180);
   });
 
-  // Mostrar resumo depois de todos fliparem
   const totalDelay = items.length * 180 + 400;
   setTimeout(() => {
     const byRarity = items.reduce((a, item) => {
@@ -197,40 +208,41 @@ export function renderInventory(inventory) {
 
   grid.innerHTML = inventory.map(item => `
     <div class="inv-item" data-rarity="${item.rarity}">
-      <img src="${item.image}" alt="${item.name}"
+      <img src="${item.image}" alt="${item.name}" data-item-name="${item.name}"
            onerror="this.onerror=null;this.src='${SKIN_PH}'">
       <div class="inv-name">${item.name}</div>
       <div class="inv-rarity" style="color:${RARITY_COLORS[item.rarity]}">${RARITY_NAMES[item.rarity] || item.rarity}</div>
       <div class="inv-wear">${WEAR_NAMES[item.wear] || item.wear || ''}</div>
     </div>
   `).join('');
+
+  loadItemImages(grid);
 }
 
 // ===== HISTORY PAGE =====
 export function renderHistory(history, stats) {
-  // Stats
   document.getElementById('h-total').textContent = stats?.total ?? 0;
   document.getElementById('h-spent').textContent = stats ? `$${stats.totalSpent.toFixed(2)}` : '$0.00';
 
-  // Melhor drop
   const bestSection = document.getElementById('best-drop-section');
   if (stats?.bestItem) {
     const b = stats.bestItem;
     const color = RARITY_COLORS[b.rarity];
     bestSection.innerHTML = `
       <div class="best-drop" style="border-color:${color}44">
-        <img src="${b.image}" alt="${b.name}" onerror="this.onerror=null;this.src='${SKIN_PH}'">
+        <img src="${b.image}" alt="${b.name}" data-item-name="${b.name}"
+             onerror="this.onerror=null;this.src='${SKIN_PH}'">
         <div class="best-drop-info">
           <small>🏆 Melhor Drop</small>
           <strong style="color:${color}">${b.name}</strong>
           <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">${RARITY_NAMES[b.rarity] || b.rarity} • ${WEAR_NAMES[b.wear] || b.wear || ''}</div>
         </div>
       </div>`;
+    loadItemImages(bestSection);
   } else {
     bestSection.innerHTML = '';
   }
 
-  // Barra de raridades
   const barChart = document.getElementById('rarity-bar-chart');
   if (stats?.total) {
     const order = ['gold','covert','classified','restricted','milspec'];
@@ -251,7 +263,6 @@ export function renderHistory(history, stats) {
     barChart.innerHTML = '';
   }
 
-  // Lista de histórico
   const list = document.getElementById('history-list');
   if (!history.length) {
     list.innerHTML = `<div class="empty-state">
@@ -269,7 +280,7 @@ export function renderHistory(history, stats) {
     const timeStr = date.toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
     return `
       <div class="history-row" data-rarity="${entry.item.rarity}">
-        <img src="${entry.item.image}" alt="${entry.item.name}"
+        <img src="${entry.item.image}" alt="${entry.item.name}" data-item-name="${entry.item.name}"
              onerror="this.onerror=null;this.src='${SKIN_PH}'">
         <div>
           <div class="hr-name">${entry.item.name}</div>
@@ -281,4 +292,6 @@ export function renderHistory(history, stats) {
         </div>
       </div>`;
   }).join('');
+
+  loadItemImages(list);
 }

@@ -11,7 +11,7 @@ import {
   buildRouletteTrack, animateRoulette,
   showWonModal, showMultiModal,
   renderInventory, renderHistory,
-} from './ui.js?v=4';
+} from './ui.js?v=5';
 
 let cases = [];
 let currentCase = null;
