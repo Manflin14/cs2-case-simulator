@@ -1,5 +1,5 @@
 import { loadCases, rollItem, generateRouletteItems } from './data.js?v=6';
-import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=6';
+import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=7';
 import { getInventory, addToInventory, removeFromInventory, removeItemsFromInventory } from './inventory.js?v=6';
 import { recordOpening, getHistory, computeStats } from './history.js?v=6';
 import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=4';
@@ -20,7 +20,7 @@ import {
   renderTradeupGrid, renderProfile,
   showDailyModal, showAchievementUnlocked,
   updateNavRank,
-} from './ui.js?v=6';
+} from './ui.js?v=7';
 import { generateCrashPoint, rollDouble, flipCoin, calcDoubleProfit, calcCoinflipProfit } from './casino.js?v=6';
 import { validateTradeup, executeTradeup, getAllCaseItems } from './tradeup.js?v=6';
 import { getRankInfo, getXPForItem, getLocalXP, addLocalXP } from './ranks.js?v=6';

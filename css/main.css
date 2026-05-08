@@ -1525,3 +1525,34 @@ body {
   .multi-grid { grid-template-columns: repeat(2, 1fr); }
   .achievements-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ===== STEAM MARKET LINKS ===== */
+.won-market-link {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.won-market-link:hover { opacity: 1; color: var(--accent); }
+
+.inv-market-link {
+  display: block;
+  line-height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.inv-market-link:hover img { opacity: 0.85; }
+
+.history-row a,
+.best-drop a {
+  display: block;
+  line-height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.history-row a:hover img,
+.best-drop a:hover img { opacity: 0.85; }
