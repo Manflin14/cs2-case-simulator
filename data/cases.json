@@ -1,452 +1,165 @@
 {
   "cases": [
     {
-      "id": "revolution",
-      "name": "Revolution Case",
-      "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnAVvfb6aqduc_TFVjTCxbx05OU4S3jilE9w4DzRnImtIy2Sa1JzDJEhRPlK7EcO4U8gfA/256fx256f",
-      "price": 2500,
-      "items": [
-        {
-          "id": "ak47_inheritance",
-          "name": "AK-47 | Inheritance",
-          "rarity": "covert",
-          "color": "#eb4b4b",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPr_DLjZ2zoI6sQlj7-TpdziiVC3807aZjulJYRoMA/360fx360f"
-        },
-        {
-          "id": "m4a1s_printstream",
-          "name": "M4A1-S | Printstream",
-          "rarity": "covert",
-          "color": "#eb4b4b",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszFJTwT09S5g4yCmfDLP7LWnn8f6pQljLuSp9yg3w21rhE-Nz-nI4DAIVc4aVqE_FTrxLzpgMKwtJ_JnoXslXFnsg/360fx360f"
-        },
-        {
-          "id": "awp_duality",
-          "name": "AWP | Duality",
-          "rarity": "classified",
-          "color": "#d32ce6",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jTpd-iiVLj-Rc-Yz-iLNKcewN5Q/360fx360f"
-        },
-        {
-          "id": "glock_bullet_queen",
-          "name": "Glock-18 | Bullet Queen",
-          "rarity": "classified",
-          "color": "#d32ce6",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I303lGx-ks6YW2iIYTEIAZsNg/360fx360f"
-        },
-        {
-          "id": "usp_s_printstream",
-          "name": "USP-S | Printstream",
-          "rarity": "classified",
-          "color": "#d32ce6",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpNw/360fx360f"
-        },
-        {
-          "id": "sg553_hyper_beast",
-          "name": "SG 553 | Hyper Beast",
-          "rarity": "restricted",
-          "color": "#8847ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FABz7eLd_iJN79ezlZW0mvbmMezclT5D18l0juDN9I303lGx-Es4Yz-jJoWcc1c4NQ/360fx360f"
-        },
-        {
-          "id": "mp9_hydra",
-          "name": "MP9 | Hydra",
-          "rarity": "restricted",
-          "color": "#8847ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTgxZM0/360fx360f"
-        },
-        {
-          "id": "xm1014_incinegator",
-          "name": "XM1014 | Incinegator",
-          "rarity": "restricted",
-          "color": "#8847ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpor1Bge19fwPj-Jl_T09-5lpKKqPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpgQ/360fx360f"
-        },
-        {
-          "id": "mac10_disco_tech",
-          "name": "MAC-10 | Disco Tech",
-          "rarity": "milspec",
-          "color": "#4b69ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj3mIoGDJlhpSTd1kMA/360fx360f"
-        },
-        {
-          "id": "mp5sd_phosphor",
-          "name": "MP5-SD | Phosphor",
-          "rarity": "milspec",
-          "color": "#4b69ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmH6I4Kcc1c4NQ/360fx360f"
-        },
-        {
-          "id": "knife_karambit",
-          "name": "★ Karambit | Doppler",
-          "rarity": "gold",
-          "color": "#e4ae39",
-          "wear": [
-            "FN",
-            "MW"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciPl4mDkPLLP7LWnn8fupJ11L2Yod6i3FXm-0ZoMTqlIYGRJg/360fx360f"
-        }
-      ]
-    },
-    {
-      "id": "kilowatt",
+      "id": "128",
       "name": "Kilowatt Case",
-      "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnEVvqf_a6VoIfGSXz7Hlbwg57QwSS_mxhl15jiGyN37c3_GZw91W8BwRflK7EfKsa2sfw/256fx256f",
-      "price": 3000,
+      "image": "https://caseroyale.com/images/game/kilowatt_case.png",
+      "price": 2000,
       "items": [
-        {
-          "id": "ak47_vulcan",
-          "name": "AK-47 | Vulcan",
-          "rarity": "covert",
-          "color": "#eb4b4b",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPLmMr-3m2pf4sR0j-jTpamh2Qa3-kJpYmj7ddSLMlho/360fx360f"
-        },
-        {
-          "id": "m4a4_howl",
-          "name": "M4A4 | Howl",
-          "rarity": "covert",
-          "color": "#eb4b4b",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszFJTwT09S5g4yCmfDLP7LWnn8f6pQljLuSp9yt31Hj_Us9N3GiIYTEdFE7bw/360fx360f"
-        },
-        {
-          "id": "awp_chromatic_aberration",
-          "name": "AWP | Chromatic Aberration",
-          "rarity": "classified",
-          "color": "#d32ce6",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jT5I7214n5-hZv_2ymIoGDJlhpNmA/360fx360f"
-        },
-        {
-          "id": "p90_vent_rush",
-          "name": "P90 | Vent Rush",
-          "rarity": "classified",
-          "color": "#d32ce6",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f"
-        },
-        {
-          "id": "usp_s_jawbreaker",
-          "name": "USP-S | Jawbreaker",
-          "rarity": "restricted",
-          "color": "#8847ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT_d2k3FHh-0prZmj7dNTC/360fx360f"
-        },
-        {
-          "id": "glock_wasteland_rebel",
-          "name": "Glock-18 | Wasteland Rebel",
-          "rarity": "restricted",
-          "color": "#8847ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f"
-        },
-        {
-          "id": "mp7_gunsmoke",
-          "name": "MP7 | Gunsmoke",
-          "rarity": "milspec",
-          "color": "#4b69ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmqBI4Kcc1c4NQ/360fx360f"
-        },
-        {
-          "id": "nova_hyper_beast",
-          "name": "Nova | Hyper Beast",
-          "rarity": "milspec",
-          "color": "#4b69ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj32I4Kcc1c4NQ/360fx360f"
-        },
-        {
-          "id": "knife_butterfly",
-          "name": "★ Butterfly Knife | Fade",
-          "rarity": "gold",
-          "color": "#e4ae39",
-          "wear": [
-            "FN",
-            "MW"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1eb3dShQ7t2knZKPkuX1M6_ummJW4NE_j7jT8dms2gfs-hFuZWGgdI6TdlhpNmOb/360fx360f"
-        }
+        {"id":"1521","name":"SSG 08 | Dezastre","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1513.png"},
+        {"id":"1522","name":"UMP-45 | Motorized","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1514.png"},
+        {"id":"1523","name":"MAC-10 | Light Box","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1515.png"},
+        {"id":"1517","name":"Dual Berettas | Hideout","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1509.png"},
+        {"id":"1518","name":"Nova | Dark Sigil","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1510.png"},
+        {"id":"1519","name":"Tec-9 | Slag","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1511.png"},
+        {"id":"1520","name":"XM1014 | Irezumi","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1512.png"},
+        {"id":"1524","name":"Sawed-Off | Analog Input","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1516.png"},
+        {"id":"1525","name":"Five-SeveN | Hybrid","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1517.png"},
+        {"id":"1526","name":"MP7 | Just Smile","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1518.png"},
+        {"id":"1527","name":"M4A4 | Etch Lord","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1519.png"},
+        {"id":"1528","name":"Glock-18 | Block-18","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1520.png"},
+        {"id":"1529","name":"USP-S | Jawbreaker","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1521.png"},
+        {"id":"1530","name":"Zeus x27 | Olympus","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1522.png"},
+        {"id":"1531","name":"M4A1-S | Black Lotus","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1523.png"},
+        {"id":"1532","name":"AK-47 | Inheritance","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1524.png"},
+        {"id":"1533","name":"AWP | Chrome Cannon","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1525.png"},
+        {"id":"knife_kara_doppler","name":"★ Karambit | Doppler","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1528.png"},
+        {"id":"knife_butterfly_fade","name":"★ Butterfly Knife | Fade","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1261.png"}
       ]
     },
     {
-      "id": "dreams_nightmares",
-      "name": "Dreams & Nightmares",
-      "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnIV7Kb5OaU-JqfHDzXFle0u4LY8Gy_kkRgisGzcm4v4J3vDOAQmDMdyRvlK7EcmeCU3yw/256fx256f",
+      "id": "125",
+      "name": "Revolution Case",
+      "image": "https://caseroyale.com/images/game/revolution_case.png",
+      "price": 1000,
+      "items": [
+        {"id":"1485","name":"MAG-7 | Insomnia","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1477.png"},
+        {"id":"1486","name":"MP9 | Featherweight","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1478.png"},
+        {"id":"1487","name":"SG 553 | Cyberforce","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1479.png"},
+        {"id":"1481","name":"Tec-9 | Rebel","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1473.png"},
+        {"id":"1482","name":"P250 | Re.built","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1474.png"},
+        {"id":"1483","name":"SCAR-20 | Fragments","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1475.png"},
+        {"id":"1484","name":"MP5-SD | Liquidation","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1476.png"},
+        {"id":"1488","name":"MAC-10 | Sakkaku","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1480.png"},
+        {"id":"1489","name":"R8 Revolver | Banana Cannon","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1481.png"},
+        {"id":"1490","name":"P90 | Neoqueen","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1482.png"},
+        {"id":"1491","name":"Glock-18 | Umbral Rabbit","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1483.png"},
+        {"id":"1492","name":"M4A1-S | Emphorosaur-S","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1484.png"},
+        {"id":"1493","name":"P2000 | Wicked Sick","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1485.png"},
+        {"id":"1494","name":"UMP-45 | Wild Child","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1486.png"},
+        {"id":"1495","name":"AWP | Duality","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1487.png"},
+        {"id":"1496","name":"AK-47 | Head Shot","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1488.png"},
+        {"id":"1497","name":"M4A4 | Temukau","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1489.png"},
+        {"id":"knife_kara_doppler","name":"★ Karambit | Doppler","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1528.png"},
+        {"id":"knife_butterfly_fade","name":"★ Butterfly Knife | Fade","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1261.png"}
+      ]
+    },
+    {
+      "id": "124",
+      "name": "Recoil Case",
+      "image": "https://caseroyale.com/images/game/recoil_case.png",
       "price": 1800,
       "items": [
-        {
-          "id": "ak47_nightwish",
-          "name": "AK-47 | Nightwish",
-          "rarity": "covert",
-          "color": "#eb4b4b",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPLmMr-3m2pf4sR0j-jT_d2k3FHh-0prZmj7dNTC/360fx360f"
-        },
-        {
-          "id": "m4a1s_dreamscape",
-          "name": "M4A1-S | Dreamscape",
-          "rarity": "covert",
-          "color": "#eb4b4b",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f"
-        },
-        {
-          "id": "awp_dreams_nightmares",
-          "name": "AWP | Dreams & Nightmares",
-          "rarity": "classified",
-          "color": "#d32ce6",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jT5I7214n5-hZv_2ymIoGDJlhpNmA/360fx360f"
-        },
-        {
-          "id": "usp_s_nightshade",
-          "name": "USP-S | Nightshade",
-          "rarity": "classified",
-          "color": "#d32ce6",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpNw/360fx360f"
-        },
-        {
-          "id": "mac10_ensnared",
-          "name": "MAC-10 | Ensnared",
-          "rarity": "restricted",
-          "color": "#8847ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj32I4Kcc1c4NQ/360fx360f"
-        },
-        {
-          "id": "sg553_phantasm",
-          "name": "SG 553 | Phantasm",
-          "rarity": "restricted",
-          "color": "#8847ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FABz7eLd_iJN79ezlZW0mvbmMezclT5D18l0juDN9I303lGx-Es4Yz-jJoWcc1c4NQ/360fx360f"
-        },
-        {
-          "id": "mp9_ethereal",
-          "name": "MP9 | Ethereal",
-          "rarity": "restricted",
-          "color": "#8847ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTgxZM0/360fx360f"
-        },
-        {
-          "id": "glock_vogue",
-          "name": "Glock-18 | Vogue",
-          "rarity": "milspec",
-          "color": "#4b69ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjxkvc/360fx360f"
-        },
-        {
-          "id": "xm1014_haunted",
-          "name": "XM1014 | Haunted",
-          "rarity": "milspec",
-          "color": "#4b69ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpor1Bge19fwPj-Jl_T09-5lpKKqPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpgQ/360fx360f"
-        },
-        {
-          "id": "mp7_reverie",
-          "name": "MP7 | Reverie",
-          "rarity": "milspec",
-          "color": "#4b69ff",
-          "wear": [
-            "FN",
-            "MW",
-            "FT",
-            "WW",
-            "BS"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmqBI4Kcc1c4NQ/360fx360f"
-        },
-        {
-          "id": "knife_shadow_daggers",
-          "name": "★ Shadow Daggers | Doppler",
-          "rarity": "gold",
-          "color": "#e4ae39",
-          "wear": [
-            "FN",
-            "MW"
-          ],
-          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJfw9_HYzxS6NSjxdmOxvajNLrAkGlV18hw_LvKrNii2VDkrBM4ZTrwdteLMlhpMMQ/360fx360f"
-        }
+        {"id":"1467","name":"FAMAS | Meow 36","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1460.png"},
+        {"id":"1468","name":"M4A4 | Poly Mag","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1461.png"},
+        {"id":"1469","name":"Glock-18 | Winterized","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1462.png"},
+        {"id":"1463","name":"Galil AR | Destroyer","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1456.png"},
+        {"id":"1464","name":"MAC-10 | Monkeyflage","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1457.png"},
+        {"id":"1465","name":"Negev | Drop Me","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1458.png"},
+        {"id":"1466","name":"UMP-45 | Roadblock","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1459.png"},
+        {"id":"1470","name":"R8 Revolver | Crazy 8","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1463.png"},
+        {"id":"1471","name":"M249 | Downtown","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1464.png"},
+        {"id":"1472","name":"SG 553 | Dragon Tech","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1465.png"},
+        {"id":"1473","name":"Dual Berettas | Flora Carnivora","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1466.png"},
+        {"id":"1474","name":"P90 | Vent Rush","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1467.png"},
+        {"id":"1475","name":"P250 | Visions","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1468.png"},
+        {"id":"1476","name":"Sawed-Off | Kiss Love","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1469.png"},
+        {"id":"1477","name":"AK-47 | Ice Coaled","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1470.png"},
+        {"id":"1478","name":"AWP | Chromatic Aberration","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1471.png"},
+        {"id":"1479","name":"USP-S | Printstream","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1472.png"},
+        {"id":"knife_kara_doppler","name":"★ Karambit | Doppler","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1528.png"},
+        {"id":"knife_butterfly_fade","name":"★ Butterfly Knife | Fade","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1261.png"}
+      ]
+    },
+    {
+      "id": "123",
+      "name": "Dreams & Nightmares Case",
+      "image": "https://caseroyale.com/images/game/dreams_nightmares_case.png",
+      "price": 1000,
+      "items": [
+        {"id":"1451","name":"Five-SeveN | Scrawl","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1444.png"},
+        {"id":"1452","name":"MAC-10 | Ensnared","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1445.png"},
+        {"id":"1446","name":"SCAR-20 | Poultrygeist","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1439.png"},
+        {"id":"1447","name":"MAG-7 | Foresight","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1440.png"},
+        {"id":"1448","name":"P2000 | Lifted Spirits","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1441.png"},
+        {"id":"1449","name":"MP5-SD | Necro Jr.","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1442.png"},
+        {"id":"1450","name":"Sawed-Off | Spirit Board","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1443.png"},
+        {"id":"1453","name":"XM1014 | Zombie Offensive","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1446.png"},
+        {"id":"1454","name":"G3SG1 | Dream Glade","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1447.png"},
+        {"id":"1455","name":"PP-Bizon | Space Cat","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1448.png"},
+        {"id":"1456","name":"USP-S | Ticket to Hell","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1449.png"},
+        {"id":"1457","name":"M4A1-S | Night Terror","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1450.png"},
+        {"id":"1458","name":"FAMAS | Rapid Eye Movement","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1451.png"},
+        {"id":"1459","name":"Dual Berettas | Melondrama","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1452.png"},
+        {"id":"1460","name":"MP7 | Abyssal Apparition","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1453.png"},
+        {"id":"1461","name":"MP9 | Starlight Protector","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1454.png"},
+        {"id":"1462","name":"AK-47 | Nightwish","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1455.png"},
+        {"id":"knife_kara_doppler","name":"★ Karambit | Doppler","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1528.png"},
+        {"id":"knife_butterfly_fade","name":"★ Butterfly Knife | Fade","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1261.png"}
+      ]
+    },
+    {
+      "id": "95",
+      "name": "Prisma 2 Case",
+      "image": "https://caseroyale.com/images/game/prisma_2_case.png",
+      "price": 1200,
+      "items": [
+        {"id":"1217","name":"CZ75-Auto | Distressed","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1210.png"},
+        {"id":"1218","name":"MP5-SD | Desert Strike","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1211.png"},
+        {"id":"1219","name":"AUG | Tom Cat","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1212.png"},
+        {"id":"1220","name":"Desert Eagle | Blue Ply","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1213.png"},
+        {"id":"1221","name":"AWP | Capillary","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1214.png"},
+        {"id":"1215","name":"Negev | Prototype","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1208.png"},
+        {"id":"1216","name":"R8 Revolver | Bone Forged","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1209.png"},
+        {"id":"1225","name":"SSG 08 | Fever Dream","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1218.png"},
+        {"id":"1226","name":"SG 553 | Darkwing","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1219.png"},
+        {"id":"1222","name":"SCAR-20 | Enforcer","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1215.png"},
+        {"id":"1223","name":"Sawed-Off | Apocalypto","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1216.png"},
+        {"id":"1224","name":"P2000 | Acid Etched","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1217.png"},
+        {"id":"1227","name":"MAG-7 | Justice","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1220.png"},
+        {"id":"1228","name":"AK-47 | Phantom Disruptor","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1221.png"},
+        {"id":"1229","name":"MAC-10 | Disco Tech","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1222.png"},
+        {"id":"1230","name":"M4A1-S | Player Two","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1223.png"},
+        {"id":"1231","name":"Glock-18 | Bullet Queen","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1224.png"},
+        {"id":"knife_kara_doppler","name":"★ Karambit | Doppler","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1528.png"},
+        {"id":"knife_butterfly_fade","name":"★ Butterfly Knife | Fade","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1261.png"}
+      ]
+    },
+    {
+      "id": "84",
+      "name": "Prisma Case",
+      "image": "https://caseroyale.com/images/game/prisma_case.png",
+      "price": 1200,
+      "items": [
+        {"id":"1068","name":"Galil AR | Akoben","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1072.png"},
+        {"id":"1069","name":"MAC-10 | Whitefish","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1073.png"},
+        {"id":"1070","name":"AK-47 | Uncharted","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1074.png"},
+        {"id":"1064","name":"MP7 | Mischief","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1068.png"},
+        {"id":"1065","name":"P90 | Off World","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1069.png"},
+        {"id":"1066","name":"FAMAS | Crypsis","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1070.png"},
+        {"id":"1067","name":"P250 | Verdigris","rarity":"milspec","color":"#4b69ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1071.png"},
+        {"id":"1071","name":"MP5-SD | Gauss","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1075.png"},
+        {"id":"1072","name":"Tec-9 | Bamboozle","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1076.png"},
+        {"id":"1073","name":"UMP-45 | Moonrise","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1077.png"},
+        {"id":"1074","name":"Desert Eagle | Light Rail","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1078.png"},
+        {"id":"1075","name":"AWP | Atheris","rarity":"restricted","color":"#8847ff","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1079.png"},
+        {"id":"1076","name":"R8 Revolver | Skull Crusher","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1080.png"},
+        {"id":"1077","name":"XM1014 | Incinegator","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1081.png"},
+        {"id":"1078","name":"AUG | Momentum","rarity":"classified","color":"#d32ce6","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1082.png"},
+        {"id":"1079","name":"M4A4 | The Emperor","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1083.png"},
+        {"id":"1080","name":"Five-SeveN | Angry Mob","rarity":"covert","color":"#eb4b4b","wear":["FN","MW","FT","WW","BS"],"image":"https://caseroyale.com/images/game/1084.png"},
+        {"id":"knife_kara_doppler","name":"★ Karambit | Doppler","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1528.png"},
+        {"id":"knife_butterfly_fade","name":"★ Butterfly Knife | Fade","rarity":"gold","color":"#e4ae39","wear":["FN","MW"],"image":"https://caseroyale.com/images/game/1261.png"}
       ]
     }
   ]

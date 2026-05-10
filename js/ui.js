@@ -80,7 +80,7 @@ export function renderCasesGrid(cases, onOpen) {
       <div class="case-name">${c.name}</div>
       <div class="case-price">
         <span style="font-size:0.9em;opacity:0.7">💰</span>
-        ${Math.round(c.price * 1000).toLocaleString('pt-BR')} coins
+        ${Math.round(c.price).toLocaleString('pt-BR')} coins
       </div>
       <button class="case-btn">Abrir Case</button>
     </div>

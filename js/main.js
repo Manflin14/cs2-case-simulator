@@ -675,15 +675,15 @@ function setupCrash() {
 
         if (won) {
           if (multEl)   { multEl.textContent = `${finalMult.toFixed(2)}x`; multEl.style.color = '#4ade80'; }
-          if (statusEl) { statusEl.textContent = `+$${profit.toFixed(2)} (${finalMult.toFixed(2)}x)`; statusEl.style.color = '#4ade80'; }
+          if (statusEl) { statusEl.textContent = `+${Math.round(profit).toLocaleString("pt-BR")} coins (${finalMult.toFixed(2)}x)`; statusEl.style.color = '#4ade80'; }
           setBalance(newBalance);
           updateWalletUI(newBalance);
-          showToast(`Crash: +$${profit.toFixed(2)}!`, 'success');
+          showToast(`Crash: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
           incrementStat('casino_wins');
           await processAchievements();
         } else {
           if (multEl)   { multEl.textContent = `💥 ${crashAt.toFixed(2)}x`; multEl.style.color = '#eb4b4b'; }
-          if (statusEl) { statusEl.textContent = `Crash! Perdeu $${crashState.bet.toFixed(2)}`; statusEl.style.color = '#eb4b4b'; }
+          if (statusEl) { statusEl.textContent = `Crash! Perdeu ${Math.round(crashState.bet).toLocaleString("pt-BR")} coins`; statusEl.style.color = '#eb4b4b'; }
           showToast(`Crash em ${crashAt.toFixed(2)}x`, 'error');
         }
         document.getElementById('crash-start-btn').disabled = false;
@@ -754,13 +754,13 @@ async function finishCrashGuest(won, finalMult) {
     const profit = parseFloat((crashState.bet * finalMult - crashState.bet).toFixed(2));
     await addFunds(crashState.bet + profit);
     updateWalletUI(getBalance());
-    if (statusEl) { statusEl.textContent = `+$${profit.toFixed(2)} (${finalMult.toFixed(2)}x)`; statusEl.style.color = '#4ade80'; }
-    showToast(`Crash: +$${profit.toFixed(2)}!`, 'success');
+    if (statusEl) { statusEl.textContent = `+${Math.round(profit).toLocaleString("pt-BR")} coins (${finalMult.toFixed(2)}x)`; statusEl.style.color = '#4ade80'; }
+    showToast(`Crash: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
     incrementStat('casino_wins');
     await processAchievements();
   } else {
     if (multEl) { multEl.textContent = `💥 ${crashState.crashAt.toFixed(2)}x`; multEl.style.color = '#eb4b4b'; }
-    if (statusEl) { statusEl.textContent = `Crash! Perdeu $${crashState.bet.toFixed(2)}`; statusEl.style.color = '#eb4b4b'; }
+    if (statusEl) { statusEl.textContent = `Crash! Perdeu ${Math.round(crashState.bet).toLocaleString("pt-BR")} coins`; statusEl.style.color = '#eb4b4b'; }
     showToast(`Crash em ${crashState.crashAt.toFixed(2)}x`, 'error');
   }
 
@@ -807,11 +807,11 @@ function setupDouble() {
           setBalance(newBalance);
           updateWalletUI(newBalance);
           if (won) {
-            showToast(`Double: +$${profit.toFixed(2)}!`, 'success');
+            showToast(`Double: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
             incrementStat('casino_wins');
             processAchievements();
           } else {
-            showToast(`Double: perdeu $${bet.toFixed(2)} (${result})`, 'error');
+            showToast(`Double: perdeu ${Math.round(bet).toLocaleString("pt-BR")} coins (${result})`, 'error');
           }
           doubleSpinning   = false;
           spinBtn.disabled = false;
@@ -851,11 +851,11 @@ function setupDouble() {
       if (profit >= 0) {
         await addFunds(bet + profit);
         updateWalletUI(getBalance());
-        showToast(`Double: +$${profit.toFixed(2)}!`, 'success');
+        showToast(`Double: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
         incrementStat('casino_wins');
         await processAchievements();
       } else {
-        showToast(`Double: perdeu $${bet.toFixed(2)} (${guestResult.color})`, 'error');
+        showToast(`Double: perdeu ${Math.round(bet).toLocaleString("pt-BR")} coins (${guestResult.color})`, 'error');
       }
       doubleSpinning   = false;
       spinBtn.disabled = false;
@@ -899,17 +899,17 @@ function setupCoinflip() {
           if (coin) { coin.classList.remove('flipping'); coin.textContent = result === 'ct' ? '🔵 CT' : '🟡 T'; }
           const resultEl = document.getElementById('coinflip-result');
           if (resultEl) {
-            resultEl.textContent = won ? `+$${profit.toFixed(2)} — Você ganhou!` : `-$${bet.toFixed(2)} — Perdeu!`;
+            resultEl.textContent = won ? `+${Math.round(profit).toLocaleString("pt-BR")} coins — Você ganhou!` : `-${Math.round(bet).toLocaleString("pt-BR")} coins — Perdeu!`;
             resultEl.style.color = won ? '#4ade80' : '#eb4b4b';
           }
           setBalance(newBalance);
           updateWalletUI(newBalance);
           if (won) {
-            showToast(`Coinflip: +$${profit.toFixed(2)}!`, 'success');
+            showToast(`Coinflip: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
             incrementStat('casino_wins');
             processAchievements();
           } else {
-            showToast(`Coinflip: perdeu $${bet.toFixed(2)}!`, 'error');
+            showToast(`Coinflip: perdeu ${Math.round(bet).toLocaleString("pt-BR")} coins!`, 'error');
           }
           coinflipping     = false;
           flipBtn.disabled = false;
@@ -940,17 +940,17 @@ function setupCoinflip() {
       if (coin) { coin.classList.remove('flipping'); coin.textContent = guestResult === 'ct' ? '🔵 CT' : '🟡 T'; }
       const resultEl = document.getElementById('coinflip-result');
       if (resultEl) {
-        resultEl.textContent = profit >= 0 ? `+$${profit.toFixed(2)} — Você ganhou!` : `-$${bet.toFixed(2)} — Perdeu!`;
+        resultEl.textContent = profit >= 0 ? `+${Math.round(profit).toLocaleString("pt-BR")} coins — Você ganhou!` : `-${Math.round(bet).toLocaleString("pt-BR")} coins — Perdeu!`;
         resultEl.style.color = profit >= 0 ? '#4ade80' : '#eb4b4b';
       }
       if (profit >= 0) {
         await addFunds(bet + profit);
         updateWalletUI(getBalance());
-        showToast(`Coinflip: +$${profit.toFixed(2)}!`, 'success');
+        showToast(`Coinflip: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
         incrementStat('casino_wins');
         await processAchievements();
       } else {
-        showToast(`Coinflip: perdeu $${bet.toFixed(2)}!`, 'error');
+        showToast(`Coinflip: perdeu ${Math.round(bet).toLocaleString("pt-BR")} coins!`, 'error');
       }
       coinflipping     = false;
       flipBtn.disabled = false;

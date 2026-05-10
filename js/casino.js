@@ -17,7 +17,7 @@ export function didCrash(crashAt, cashedOutAt) {
 }
 
 export function calcCrashProfit(bet, cashoutMultiplier) {
-  return parseFloat((bet * cashoutMultiplier - bet).toFixed(2));
+  return Math.round(bet * cashoutMultiplier - bet);
 }
 
 // ============================================================
@@ -38,7 +38,7 @@ export function rollDouble() {
 
 export function calcDoubleProfit(bet, choice, resultColor) {
   if (choice !== resultColor) return -bet;
-  return parseFloat((bet * (DOUBLE_PAYOUTS[resultColor] - 1)).toFixed(2));
+  return Math.round(bet * (DOUBLE_PAYOUTS[resultColor] - 1));
 }
 
 // ============================================================
