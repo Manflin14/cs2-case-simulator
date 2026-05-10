@@ -1,9 +1,9 @@
 import { loadCases, rollItem, generateRouletteItems } from './data.js?v=6';
-import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=9';
+import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=10';
 import { getInventory, addToInventory, removeFromInventory, removeItemsFromInventory } from './inventory.js?v=6';
 import { recordOpening, getHistory, computeStats } from './history.js?v=6';
 import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=4';
-import { signIn, signUp, signInWithGitHub, signOut, onAuthChange, loadProfile } from './auth.js?v=6';
+import { signIn, signUp, signInWithGitHub, signOut, onAuthChange, loadProfile, saveBalance } from './auth.js?v=7';
 import { supabase } from './supabase.js?v=4';
 import {
   loadInventory, saveInventoryItem, deleteInventoryItem,
@@ -85,7 +85,13 @@ async function onLogin(user) {
 
     const profile = await loadProfile(user.id);
     if (profile) {
-      setBalance(profile.balance);
+      let bal = parseFloat(profile.balance) || 0;
+      // Migrar saldo antigo em dólares (< 1000) → coins
+      if (bal < 1000) {
+        bal = 50000;
+        await saveBalance(user.id, bal).catch(() => {});
+      }
+      setBalance(bal);
       currentXP = profile.rank_xp || 0;
     }
     updateWalletUI(getBalance());
