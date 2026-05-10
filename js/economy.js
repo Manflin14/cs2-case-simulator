@@ -12,7 +12,14 @@ export function setCurrentUser(uid) { _userId = uid; }
 
 export function getBalance() {
   const v = localStorage.getItem(STORAGE_KEY);
-  return v !== null ? parseFloat(v) : STARTING_BAL;
+  if (v === null) return STARTING_BAL;
+  const parsed = parseFloat(v);
+  // Migrar saldo antigo em dólares (< 1000) → reiniciar com coins
+  if (isNaN(parsed) || parsed < 1000) {
+    setBalance(STARTING_BAL);
+    return STARTING_BAL;
+  }
+  return parsed;
 }
 
 export function setBalance(amount) {

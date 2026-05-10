@@ -1,5 +1,5 @@
 import { loadCases, rollItem, generateRouletteItems } from './data.js?v=6';
-import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=7';
+import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=8';
 import { getInventory, addToInventory, removeFromInventory, removeItemsFromInventory } from './inventory.js?v=6';
 import { recordOpening, getHistory, computeStats } from './history.js?v=6';
 import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=4';
