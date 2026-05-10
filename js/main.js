@@ -1,5 +1,5 @@
 import { loadCases, rollItem, generateRouletteItems } from './data.js?v=6';
-import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=10';
+import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser, formatCurrency } from './economy.js?v=11';
 import { getInventory, addToInventory, removeFromInventory, removeItemsFromInventory } from './inventory.js?v=6';
 import { recordOpening, getHistory, computeStats } from './history.js?v=6';
 import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=4';
@@ -132,7 +132,7 @@ async function checkAndShowDailyBonus() {
         setBalance(newBal);
         updateWalletUI(newBal);
         markDailyClaimed();
-        showToast(`+${DAILY_AMOUNT.toLocaleString('pt-BR')} coins de bônus diário!`, 'success');
+        showToast(`+${formatCurrency(DAILY_AMOUNT)} de bônus diário!`, 'success');
         incrementStat('daily_claims');
         await processAchievements();
       } catch (err) {
@@ -144,7 +144,7 @@ async function checkAndShowDailyBonus() {
       await addFunds(DAILY_AMOUNT);
       updateWalletUI(getBalance());
       markDailyClaimed();
-      showToast(`+${DAILY_AMOUNT.toLocaleString('pt-BR')} coins de bônus diário!`, 'success');
+      showToast(`+${formatCurrency(DAILY_AMOUNT)} de bônus diário!`, 'success');
       incrementStat('daily_claims');
     });
   }
@@ -324,7 +324,7 @@ function setupWallet() {
   document.getElementById('wallet-btn').addEventListener('click', async () => {
     playClick();
     await addFunds(10000);
-    showToast('+ 10.000 coins adicionados!', 'success');
+    showToast(`+ ${formatCurrency(10000)} adicionados!`, 'success');
   });
 }
 
@@ -332,7 +332,7 @@ function setupWallet() {
 async function onSellInventoryItem(item) {
   const price = await sellItem(item);
   updateWalletUI(getBalance());
-  showToast(`${item.name} vendido por ${Math.round(price).toLocaleString('pt-BR')} coins!`, 'success');
+  showToast(`${item.name} vendido por ${formatCurrency(price)}!`, 'success');
 
   removeFromInventory(item.id);
   if (currentUser && item._dbId) await deleteInventoryItem(item._dbId).catch(console.warn);
@@ -374,7 +374,7 @@ async function openCase(qty = 1) {
   const totalCost = currentCase.price * qty;
   const ok = await spend(totalCost);
   if (!ok) {
-    showToast(`Coins insuficientes! Precisa de ${Math.round(totalCost).toLocaleString('pt-BR')} coins`, 'error');
+    showToast(`Saldo insuficiente! Precisa de ${formatCurrency(totalCost)}`, 'error');
     isSpinning = false;
     enableOpenBtns();
     return;
@@ -465,7 +465,7 @@ async function showMultiResult(wonItems, qty) {
         if (!currentUser) recordOpening(currentCase, item);
       }
       updateWalletUI(getBalance());
-      showToast(`Itens vendidos por ${Math.round(total).toLocaleString('pt-BR')} coins!`, 'success');
+      showToast(`Itens vendidos por ${formatCurrency(total)}!`, 'success');
       incrementStat('sold', wonItems.length);
       enableOpenBtns();
     },
@@ -491,7 +491,7 @@ async function onSellWonItem(item) {
   const price = await sellItem(item);
   updateWalletUI(getBalance());
   if (!currentUser) recordOpening(currentCase, item);
-  showToast(`${item.name} vendido por ${Math.round(price).toLocaleString('pt-BR')} coins!`, 'success');
+  showToast(`${item.name} vendido por ${formatCurrency(price)}!`, 'success');
   incrementStat('sold');
   incrementStat('opened');
   await processAchievements();
@@ -514,37 +514,7 @@ function setupTradeup() {
     const inv      = getInventory();
     const selected = inv.filter(i => tradeupSelected.has(i.id));
 
-    // Usuário logado: Edge Function server-side
-    if (currentUser) {
-      const dbIds = selected.map(i => i._dbId).filter(Boolean);
-      if (dbIds.length !== 10) {
-        showToast('Sincronize o inventário antes de fazer trade-up', 'error');
-        return;
-      }
-      try {
-        btn.disabled = true;
-        const { result, newXP } = await callEdge('tradeup', { itemIds: dbIds });
-
-        removeItemsFromInventory([...tradeupSelected]);
-        addToInventory(result);
-        tradeupSelected.clear();
-
-        currentXP = newXP;
-        updateNavRank(currentXP);
-
-        showToast(`Trade-up: ${result.name}!`, 'success');
-        incrementStat('tradeups');
-        await processAchievements();
-        renderTradeupGrid(getInventory(), tradeupSelected, onToggleTradeupItem);
-      } catch (err) {
-        showToast(err.message || 'Erro no trade-up', 'error');
-      } finally {
-        btn.disabled = tradeupSelected.size !== 10;
-      }
-      return;
-    }
-
-    // Modo convidado: client-side
+    // Client-side trade-up logic (works for both guests and logged-in users)
     const { valid, reason } = validateTradeup(selected);
     if (!valid) { showToast(reason, 'error'); return; }
 
@@ -625,25 +595,7 @@ function setupCrash() {
     const statusEl = document.getElementById('crash-status');
     if (statusEl) { statusEl.textContent = 'Em progresso...'; statusEl.style.color = ''; }
 
-    // Usuário logado: servidor gera o crash point
-    if (currentUser) {
-      try {
-        const { gameId, startedAt } = await callEdge('casino-crash-start', { bet });
-        crashState = {
-          running: true, gameId, startedAt: new Date(startedAt).getTime(),
-          multiplier: 1.00, bet, raf: null, cashoutAt: null,
-        };
-        updateWalletUI(getBalance() - bet); // UI otimista (saldo já foi debitado no servidor)
-        runCrashAnimationServer();
-      } catch (err) {
-        showToast(err.message || 'Erro ao iniciar Crash', 'error');
-        startBtn.disabled   = false;
-        cashoutBtn.disabled = true;
-      }
-      return;
-    }
-
-    // Modo convidado: client-side
+    // Client-side logic (works for both guests and logged-in users)
     const ok = await spend(bet);
     if (!ok) { showToast('Saldo insuficiente!', 'error'); startBtn.disabled = false; cashoutBtn.disabled = true; return; }
     updateWalletUI(getBalance());
@@ -655,38 +607,7 @@ function setupCrash() {
   cashoutBtn.addEventListener('click', async () => {
     if (!crashState.running) return;
 
-    if (currentUser && crashState.gameId) {
-      cashoutBtn.disabled = true;
-      crashState.running  = false;
-      try {
-        const { won, finalMult, crashAt, profit, newBalance } = await callEdge('casino-crash-cashout', { gameId: crashState.gameId });
-        if (crashState.raf) cancelAnimationFrame(crashState.raf);
-
-        const multEl   = document.getElementById('crash-multiplier');
-        const statusEl = document.getElementById('crash-status');
-
-        if (won) {
-          if (multEl)   { multEl.textContent = `${finalMult.toFixed(2)}x`; multEl.style.color = '#4ade80'; }
-          if (statusEl) { statusEl.textContent = `+${Math.round(profit).toLocaleString("pt-BR")} coins (${finalMult.toFixed(2)}x)`; statusEl.style.color = '#4ade80'; }
-          setBalance(newBalance);
-          updateWalletUI(newBalance);
-          showToast(`Crash: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
-          incrementStat('casino_wins');
-          await processAchievements();
-        } else {
-          if (multEl)   { multEl.textContent = `💥 ${crashAt.toFixed(2)}x`; multEl.style.color = '#eb4b4b'; }
-          if (statusEl) { statusEl.textContent = `Crash! Perdeu ${Math.round(crashState.bet).toLocaleString("pt-BR")} coins`; statusEl.style.color = '#eb4b4b'; }
-          showToast(`Crash em ${crashAt.toFixed(2)}x`, 'error');
-        }
-        document.getElementById('crash-start-btn').disabled = false;
-      } catch (err) {
-        showToast(err.message || 'Erro no cashout', 'error');
-        document.getElementById('crash-start-btn').disabled = false;
-      }
-      return;
-    }
-
-    // Guest cashout
+    // Client-side cashout
     crashState.cashoutAt = crashState.multiplier;
     crashState.running   = false;
   });
@@ -746,13 +667,13 @@ async function finishCrashGuest(won, finalMult) {
     const profit = parseFloat((crashState.bet * finalMult - crashState.bet).toFixed(2));
     await addFunds(crashState.bet + profit);
     updateWalletUI(getBalance());
-    if (statusEl) { statusEl.textContent = `+${Math.round(profit).toLocaleString("pt-BR")} coins (${finalMult.toFixed(2)}x)`; statusEl.style.color = '#4ade80'; }
-    showToast(`Crash: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
+    if (statusEl) { statusEl.textContent = `+${formatCurrency(profit)} (${finalMult.toFixed(2)}x)`; statusEl.style.color = '#4ade80'; }
+    showToast(`Crash: +${formatCurrency(profit)}!`, 'success');
     incrementStat('casino_wins');
     await processAchievements();
   } else {
     if (multEl) { multEl.textContent = `💥 ${crashState.crashAt.toFixed(2)}x`; multEl.style.color = '#eb4b4b'; }
-    if (statusEl) { statusEl.textContent = `Crash! Perdeu ${Math.round(crashState.bet).toLocaleString("pt-BR")} coins`; statusEl.style.color = '#eb4b4b'; }
+    if (statusEl) { statusEl.textContent = `Crash! Perdeu ${formatCurrency(crashState.bet)}`; statusEl.style.color = '#eb4b4b'; }
     showToast(`Crash em ${crashState.crashAt.toFixed(2)}x`, 'error');
   }
 
@@ -781,43 +702,7 @@ function setupDouble() {
     const track = document.getElementById('double-track');
     if (track) track.classList.add('spinning');
 
-    // Usuário logado: servidor determina resultado
-    if (currentUser) {
-      try {
-        const { result, won, profit, newBalance } = await callEdge('casino-double', { bet, choice });
-
-        setTimeout(() => {
-          if (track) track.classList.remove('spinning');
-          const resultEl = document.getElementById('double-result');
-          if (resultEl) {
-            const clrMap   = { red: '#eb4b4b', black: '#2a2a3a', green: '#4ade80' };
-            const labelMap = { red: '🔴 VERMELHO', black: '⚫ PRETO', green: '💚 VERDE' };
-            resultEl.textContent  = labelMap[result];
-            resultEl.style.background = clrMap[result];
-            resultEl.style.display    = 'flex';
-          }
-          setBalance(newBalance);
-          updateWalletUI(newBalance);
-          if (won) {
-            showToast(`Double: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
-            incrementStat('casino_wins');
-            processAchievements();
-          } else {
-            showToast(`Double: perdeu ${Math.round(bet).toLocaleString("pt-BR")} coins (${result})`, 'error');
-          }
-          doubleSpinning   = false;
-          spinBtn.disabled = false;
-        }, 1800);
-      } catch (err) {
-        if (track) track.classList.remove('spinning');
-        showToast(err.message || 'Erro no Double', 'error');
-        doubleSpinning   = false;
-        spinBtn.disabled = false;
-      }
-      return;
-    }
-
-    // Modo convidado
+    // Client-side logic (works for both guests and logged-in users)
     const ok = await spend(bet);
     if (!ok) {
       if (track) track.classList.remove('spinning');
@@ -843,11 +728,11 @@ function setupDouble() {
       if (profit >= 0) {
         await addFunds(bet + profit);
         updateWalletUI(getBalance());
-        showToast(`Double: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
+        showToast(`Double: +${formatCurrency(profit)}!`, 'success');
         incrementStat('casino_wins');
         await processAchievements();
       } else {
-        showToast(`Double: perdeu ${Math.round(bet).toLocaleString("pt-BR")} coins (${guestResult.color})`, 'error');
+        showToast(`Double: perdeu ${formatCurrency(bet)} (${guestResult.color})`, 'error');
       }
       doubleSpinning   = false;
       spinBtn.disabled = false;
@@ -882,40 +767,7 @@ function setupCoinflip() {
     const coin = document.getElementById('coin-display');
     if (coin) { coin.classList.add('flipping'); coin.textContent = '🪙'; }
 
-    // Usuário logado: servidor determina resultado
-    if (currentUser) {
-      try {
-        const { result, won, profit, newBalance } = await callEdge('casino-coinflip', { bet, choice });
-
-        setTimeout(() => {
-          if (coin) { coin.classList.remove('flipping'); coin.textContent = result === 'ct' ? '🔵 CT' : '🟡 T'; }
-          const resultEl = document.getElementById('coinflip-result');
-          if (resultEl) {
-            resultEl.textContent = won ? `+${Math.round(profit).toLocaleString("pt-BR")} coins — Você ganhou!` : `-${Math.round(bet).toLocaleString("pt-BR")} coins — Perdeu!`;
-            resultEl.style.color = won ? '#4ade80' : '#eb4b4b';
-          }
-          setBalance(newBalance);
-          updateWalletUI(newBalance);
-          if (won) {
-            showToast(`Coinflip: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
-            incrementStat('casino_wins');
-            processAchievements();
-          } else {
-            showToast(`Coinflip: perdeu ${Math.round(bet).toLocaleString("pt-BR")} coins!`, 'error');
-          }
-          coinflipping     = false;
-          flipBtn.disabled = false;
-        }, 1200);
-      } catch (err) {
-        if (coin) { coin.classList.remove('flipping'); coin.textContent = '🪙'; }
-        showToast(err.message || 'Erro no Coinflip', 'error');
-        coinflipping     = false;
-        flipBtn.disabled = false;
-      }
-      return;
-    }
-
-    // Modo convidado
+    // Client-side logic (works for both guests and logged-in users)
     const ok = await spend(bet);
     if (!ok) {
       if (coin) { coin.classList.remove('flipping'); coin.textContent = '🪙'; }
@@ -932,17 +784,17 @@ function setupCoinflip() {
       if (coin) { coin.classList.remove('flipping'); coin.textContent = guestResult === 'ct' ? '🔵 CT' : '🟡 T'; }
       const resultEl = document.getElementById('coinflip-result');
       if (resultEl) {
-        resultEl.textContent = profit >= 0 ? `+${Math.round(profit).toLocaleString("pt-BR")} coins — Você ganhou!` : `-${Math.round(bet).toLocaleString("pt-BR")} coins — Perdeu!`;
+        resultEl.textContent = profit >= 0 ? `+${formatCurrency(profit)} — Você ganhou!` : `-${formatCurrency(bet)} — Perdeu!`;
         resultEl.style.color = profit >= 0 ? '#4ade80' : '#eb4b4b';
       }
       if (profit >= 0) {
         await addFunds(bet + profit);
         updateWalletUI(getBalance());
-        showToast(`Coinflip: +${Math.round(profit).toLocaleString("pt-BR")} coins!`, 'success');
+        showToast(`Coinflip: +${formatCurrency(profit)}!`, 'success');
         incrementStat('casino_wins');
         await processAchievements();
       } else {
-        showToast(`Coinflip: perdeu ${Math.round(bet).toLocaleString("pt-BR")} coins!`, 'error');
+        showToast(`Coinflip: perdeu ${formatCurrency(bet)}!`, 'error');
       }
       coinflipping     = false;
       flipBtn.disabled = false;

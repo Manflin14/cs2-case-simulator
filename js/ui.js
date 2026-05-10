@@ -3,6 +3,7 @@ import { loadItemImages, getSteamImage } from './steam-images.js?v=3';
 import { getRankInfo } from './ranks.js?v=6';
 import { ACHIEVEMENTS } from './rewards.js?v=6';
 import { getMarketPrice, marketUrl } from './steam-prices.js?v=1';
+import { formatCurrency } from './economy.js?v=11';
 
 // ===== PLACEHOLDER =====
 function placeholder(w, h, text = '?', bg = '#16161d') {
@@ -57,7 +58,8 @@ export function navigate(pageId) {
 
 // ===== WALLET =====
 export function updateWalletUI(balance) {
-  document.getElementById('wallet-balance').textContent = Number(balance.toFixed(0)).toLocaleString('pt-BR');
+  const el = document.getElementById('wallet-balance');
+  if (el) el.textContent = formatCurrency(balance);
 }
 
 // ===== RANK NA NAVBAR =====
@@ -80,7 +82,7 @@ export function renderCasesGrid(cases, onOpen) {
       <div class="case-name">${c.name}</div>
       <div class="case-price">
         <span style="font-size:0.9em;opacity:0.7">💰</span>
-        ${Math.round(c.price).toLocaleString('pt-BR')} coins
+        ${formatCurrency(c.price)}
       </div>
       <button class="case-btn">Abrir Case</button>
     </div>
@@ -95,9 +97,9 @@ export function renderCasesGrid(cases, onOpen) {
 export function renderOpeningPage(caseData) {
   document.getElementById('opening-case-img').src = caseData.image;
   document.getElementById('opening-case-name').textContent = caseData.name;
-  document.getElementById('opening-case-price').textContent = `${Math.round(caseData.price).toLocaleString('pt-BR')} coins`;
-  document.getElementById('open-btn').textContent  = `🔓 ABRIR  (${Math.round(caseData.price).toLocaleString('pt-BR')} coins)`;
-  document.getElementById('multi-btn').textContent = `🔓 ×10  (${Math.round(caseData.price*10).toLocaleString('pt-BR')} coins)`;
+  document.getElementById('opening-case-price').textContent = formatCurrency(caseData.price);
+  document.getElementById('open-btn').textContent  = `🔓 ABRIR  (${formatCurrency(caseData.price)})`;
+  document.getElementById('multi-btn').textContent = `🔓 ×10  (${formatCurrency(caseData.price * 10)})`;
 
   const grid = document.getElementById('contents-grid');
   grid.innerHTML = caseData.items.map(item => `
@@ -182,11 +184,11 @@ export function showWonModal(item, onKeep, onSell, onOpenAgain) {
   // Preço: mostra fallback por raridade e atualiza com preço real
   const fallback = SELL_PRICES[item.rarity] ?? 0;
   const sellBtn  = document.getElementById('btn-sell');
-  if (sellBtn) sellBtn.textContent = fallback > 0 ? `💰 Vender (${Math.round(fallback).toLocaleString("pt-BR")} coins)` : '💰 Vender';
+  if (sellBtn) sellBtn.textContent = fallback > 0 ? `💰 Vender (${formatCurrency(fallback)})` : '💰 Vender';
 
   getMarketPrice(item.name, item.wear).then(mp => {
     if (mp === null) return;
-    if (sellBtn && sellBtn.isConnected) sellBtn.textContent = `💰 Vender (${Math.round(mp).toLocaleString("pt-BR")} coins)`;
+    if (sellBtn && sellBtn.isConnected) sellBtn.textContent = `💰 Vender (${formatCurrency(mp)})`;
   }).catch(() => {});
 
   overlay.classList.add('show');
@@ -238,12 +240,12 @@ export function showMultiModal(items, onKeepAll, onSellAll, onClose) {
     // Mostrar total com preços reais do Steam Market (fallback: raridade)
     const sellAllBtn = document.getElementById('multi-sell-all');
     const fallbackTotal = items.reduce((s, i) => s + (SELL_PRICES[i.rarity]||0), 0);
-    if (sellAllBtn) sellAllBtn.textContent = `💰 Vender Tudo (${Math.round(fallbackTotal).toLocaleString('pt-BR')} coins)`;
+    if (sellAllBtn) sellAllBtn.textContent = `💰 Vender Tudo (${formatCurrency(fallbackTotal)})`;
 
     Promise.all(items.map(i => getMarketPrice(i.name, i.wear).catch(() => null))).then(prices => {
       const realTotal = items.reduce((s, item, idx) => s + (prices[idx] ?? SELL_PRICES[item.rarity] ?? 0), 0);
       if (sellAllBtn && sellAllBtn.isConnected) {
-        sellAllBtn.textContent = `💰 Vender Tudo (${Math.round(realTotal).toLocaleString('pt-BR')} coins)`;
+        sellAllBtn.textContent = `💰 Vender Tudo (${formatCurrency(realTotal)})`;
       }
     });
   }, totalDelay);
@@ -283,7 +285,7 @@ export function renderInventory(inventory, onSell) {
       <div class="inv-name">${item.name}</div>
       <div class="inv-rarity" style="color:${RARITY_COLORS[item.rarity]}">${RARITY_NAMES[item.rarity]||item.rarity}</div>
       <div class="inv-wear">${WEAR_NAMES[item.wear]||item.wear||''}</div>
-      <button class="inv-sell-btn" data-id="${item.id}">💰 ${Math.round(fallback).toLocaleString('pt-BR')} coins</button>
+      <button class="inv-sell-btn" data-id="${item.id}">💰 ${formatCurrency(fallback)}</button>
     </div>`;
   }).join('');
 
@@ -292,7 +294,7 @@ export function renderInventory(inventory, onSell) {
     getMarketPrice(item.name, item.wear).then(mp => {
       if (mp === null) return;
       const btn = grid.querySelector(`.inv-sell-btn[data-id="${item.id}"]`);
-      if (btn) btn.textContent = `💰 ${Math.round(mp).toLocaleString('pt-BR')} coins`;
+      if (btn) btn.textContent = `💰 ${formatCurrency(mp)}`;
     }).catch(() => {});
   });
 
@@ -312,7 +314,7 @@ export function renderInventory(inventory, onSell) {
 // ===== HISTORY PAGE =====
 export function renderHistory(history, stats) {
   document.getElementById('h-total').textContent  = stats?.total ?? 0;
-  document.getElementById('h-spent').textContent  = stats ? `${Math.round(stats.totalSpent).toLocaleString('pt-BR')} coins` : '0 coins';
+  document.getElementById('h-spent').textContent  = stats ? formatCurrency(stats.totalSpent) : formatCurrency(0);
 
   const bestSection = document.getElementById('best-drop-section');
   if (stats?.bestItem) {
@@ -414,9 +416,10 @@ export function renderTradeupGrid(inventory, selectedIds, onToggle) {
     </div>`;
   }).join('');
 
-  grid.querySelectorAll('.tradeup-item').forEach(el => {
-    el.addEventListener('click', () => onToggle(el.dataset.id, el.dataset.rarity));
-  });
+  grid.onclick = (e) => {
+    const el = e.target.closest('.tradeup-item');
+    if (el) onToggle(el.dataset.id, el.dataset.rarity);
+  };
   loadItemImages(grid);
 }
 
@@ -461,7 +464,7 @@ export function showDailyModal(amount, onClaim) {
   const overlay = document.getElementById('daily-overlay');
   if (!overlay) return;
   const amtEl = document.getElementById('daily-amount');
-  if (amtEl) amtEl.textContent = `${Math.round(amount).toLocaleString('pt-BR')} coins`;
+  if (amtEl) amtEl.textContent = formatCurrency(amount);
   overlay.classList.add('show');
 
   const btn = document.getElementById('daily-claim-btn');

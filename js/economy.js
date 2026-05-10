@@ -71,3 +71,26 @@ export async function sellItem(item) {
   if (price > 0) await addFunds(price);
   return price;
 }
+
+// ===== CURRENCY FORMATTING =====
+export function getUserLocale() {
+  const lang = navigator.language || 'en-US';
+  const map = {
+    'pt-BR':'BRL','pt-PT':'EUR','pt':'BRL',
+    'en-US':'USD','en-GB':'GBP','en':'USD',
+    'es-MX':'MXN','es-AR':'ARS','es':'EUR',
+    'fr':'EUR','de':'EUR','it':'EUR','nl':'EUR',
+    'ru':'RUB','zh':'CNY','ja':'JPY','ko':'KRW',
+    'tr':'TRY','pl':'PLN','sv':'SEK','no':'NOK',
+  };
+  const code = map[lang] || map[lang.split('-')[0]] || 'USD';
+  return { locale: lang, code };
+}
+
+export function formatCurrency(amount) {
+  const { locale, code } = getUserLocale();
+  return new Intl.NumberFormat(locale, {
+    style: 'currency', currency: code,
+    minimumFractionDigits: 0, maximumFractionDigits: 0,
+  }).format(Math.round(amount));
+}
