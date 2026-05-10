@@ -126,7 +126,7 @@ async function checkAndShowDailyBonus() {
         setBalance(newBal);
         updateWalletUI(newBal);
         markDailyClaimed();
-        showToast(`+$${DAILY_AMOUNT.toFixed(2)} bônus diário resgatado!`, 'success');
+        showToast(`+${DAILY_AMOUNT.toLocaleString('pt-BR')} coins de bônus diário!`, 'success');
         incrementStat('daily_claims');
         await processAchievements();
       } catch (err) {
@@ -138,7 +138,7 @@ async function checkAndShowDailyBonus() {
       await addFunds(DAILY_AMOUNT);
       updateWalletUI(getBalance());
       markDailyClaimed();
-      showToast(`+$${DAILY_AMOUNT.toFixed(2)} bônus diário!`, 'success');
+      showToast(`+${DAILY_AMOUNT.toLocaleString('pt-BR')} coins de bônus diário!`, 'success');
       incrementStat('daily_claims');
     });
   }
@@ -317,8 +317,8 @@ function setupNavigation() {
 function setupWallet() {
   document.getElementById('wallet-btn').addEventListener('click', async () => {
     playClick();
-    await addFunds(10);
-    showToast('+ $10,00 adicionado!', 'success');
+    await addFunds(10000);
+    showToast('+ 10.000 coins adicionados!', 'success');
   });
 }
 
@@ -326,7 +326,7 @@ function setupWallet() {
 async function onSellInventoryItem(item) {
   const price = await sellItem(item);
   updateWalletUI(getBalance());
-  showToast(`${item.name} vendido por $${price.toFixed(2)}!`, 'success');
+  showToast(`${item.name} vendido por ${Math.round(price).toLocaleString('pt-BR')} coins!`, 'success');
 
   removeFromInventory(item.id);
   if (currentUser && item._dbId) await deleteInventoryItem(item._dbId).catch(console.warn);
@@ -398,7 +398,7 @@ async function openCase(qty = 1) {
   const totalCost = currentCase.price * qty;
   const ok = await spend(totalCost);
   if (!ok) {
-    showToast(`Saldo insuficiente! Precisa de $${totalCost.toFixed(2)}`, 'error');
+    showToast(`Coins insuficientes! Precisa de ${Math.round(totalCost).toLocaleString('pt-BR')} coins`, 'error');
     isSpinning = false;
     enableOpenBtns();
     return;
@@ -473,7 +473,7 @@ async function showMultiResult(wonItems, qty) {
         if (!currentUser) recordOpening(currentCase, item);
       }
       updateWalletUI(getBalance());
-      showToast(`Itens vendidos por $${total.toFixed(2)}!`, 'success');
+      showToast(`Itens vendidos por ${Math.round(total).toLocaleString('pt-BR')} coins!`, 'success');
       incrementStat('sold', wonItems.length);
       enableOpenBtns();
     },
@@ -499,7 +499,7 @@ async function onSellWonItem(item) {
   const price = await sellItem(item);
   updateWalletUI(getBalance());
   if (!currentUser) recordOpening(currentCase, item);
-  showToast(`${item.name} vendido por $${price.toFixed(2)}!`, 'success');
+  showToast(`${item.name} vendido por ${Math.round(price).toLocaleString('pt-BR')} coins!`, 'success');
   incrementStat('sold');
   incrementStat('opened');
   await processAchievements();

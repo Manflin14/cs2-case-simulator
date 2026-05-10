@@ -3,7 +3,7 @@ import { SELL_PRICES } from './data.js?v=6';
 import { getMarketPrice } from './steam-prices.js?v=1';
 
 const STORAGE_KEY  = 'cs2sim_balance';
-const STARTING_BAL = 50.00;
+const STARTING_BAL = 50000;
 
 let _userId = null;
 
@@ -16,7 +16,7 @@ export function getBalance() {
 }
 
 export function setBalance(amount) {
-  localStorage.setItem(STORAGE_KEY, parseFloat(amount).toFixed(2));
+  localStorage.setItem(STORAGE_KEY, parseFloat(amount).toFixed(0));
   window.dispatchEvent(new CustomEvent('balance-update', { detail: { balance: parseFloat(amount) } }));
 }
 

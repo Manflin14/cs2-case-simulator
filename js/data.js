@@ -1,10 +1,10 @@
-// Preço de venda por raridade
+// Preço de venda por raridade (em coins)
 export const SELL_PRICES = {
-  gold:       18.00,
-  covert:      4.50,
-  classified:  1.25,
-  restricted:  0.35,
-  milspec:     0.08,
+  gold:       18000,
+  covert:      4500,
+  classified:  1250,
+  restricted:   350,
+  milspec:       80,
 };
 
 // Probabilidades por raridade (igual CS2 real)

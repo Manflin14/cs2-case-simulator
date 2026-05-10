@@ -4,7 +4,7 @@ const DAILY_KEY   = 'cs2sim_last_daily';
 const ACHV_KEY    = 'cs2sim_achievements';
 const STATS_KEY   = 'cs2sim_stats';
 
-export const DAILY_AMOUNT = 5.00;
+export const DAILY_AMOUNT = 5000; // 5000 coins
 
 export const ACHIEVEMENTS = [
   { id: 'first_open',    name: 'Primeira Abertura',  desc: 'Abra sua primeira case',             icon: '🎁', xp: 50  },

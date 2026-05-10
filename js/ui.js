@@ -57,7 +57,7 @@ export function navigate(pageId) {
 
 // ===== WALLET =====
 export function updateWalletUI(balance) {
-  document.getElementById('wallet-balance').textContent = `$ ${balance.toFixed(2)}`;
+  document.getElementById('wallet-balance').textContent = Number(balance.toFixed(0)).toLocaleString('pt-BR');
 }
 
 // ===== RANK NA NAVBAR =====
@@ -79,10 +79,8 @@ export function renderCasesGrid(cases, onOpen) {
            onerror="this.onerror=null;this.src='${CASE_PH}'">
       <div class="case-name">${c.name}</div>
       <div class="case-price">
-        <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.736 6.979C9.208 6.193 9.696 6 10 6c.304 0 .792.193 1.264.979a1 1 0 001.715-1.029C12.279 4.784 11.232 4 10 4s-2.279.784-2.979 1.95c-.285.475-.507 1-.67 1.55H6a1 1 0 000 2h.013a9.358 9.358 0 000 1H6a1 1 0 100 2h.351c.163.55.385 1.075.67 1.55C7.721 15.216 8.768 16 10 16s2.279-.784 2.979-1.95a1 1 0 10-1.715-1.029c-.472.786-.96.979-1.264.979-.304 0-.792-.193-1.264-.979a4.265 4.265 0 01-.264-.521H10a1 1 0 100-2H8.017a7.36 7.36 0 010-1H10a1 1 0 100-2H8.472c.08-.185.167-.36.264-.521z" clip-rule="evenodd"/>
-        </svg>
-        ${c.price.toFixed(2)}
+        <span style="font-size:0.9em;opacity:0.7">💰</span>
+        ${Math.round(c.price * 1000).toLocaleString('pt-BR')} coins
       </div>
       <button class="case-btn">Abrir Case</button>
     </div>
@@ -97,9 +95,9 @@ export function renderCasesGrid(cases, onOpen) {
 export function renderOpeningPage(caseData) {
   document.getElementById('opening-case-img').src = caseData.image;
   document.getElementById('opening-case-name').textContent = caseData.name;
-  document.getElementById('opening-case-price').textContent = `$ ${caseData.price.toFixed(2)}`;
-  document.getElementById('open-btn').textContent  = `🔓 ABRIR  ($${caseData.price.toFixed(2)})`;
-  document.getElementById('multi-btn').textContent = `🔓 ×10  ($${(caseData.price * 10).toFixed(2)})`;
+  document.getElementById('opening-case-price').textContent = `${Math.round(caseData.price).toLocaleString('pt-BR')} coins`;
+  document.getElementById('open-btn').textContent  = `🔓 ABRIR  (${Math.round(caseData.price).toLocaleString('pt-BR')} coins)`;
+  document.getElementById('multi-btn').textContent = `🔓 ×10  (${Math.round(caseData.price*10).toLocaleString('pt-BR')} coins)`;
 
   const grid = document.getElementById('contents-grid');
   grid.innerHTML = caseData.items.map(item => `
@@ -184,11 +182,11 @@ export function showWonModal(item, onKeep, onSell, onOpenAgain) {
   // Preço: mostra fallback por raridade e atualiza com preço real
   const fallback = SELL_PRICES[item.rarity] ?? 0;
   const sellBtn  = document.getElementById('btn-sell');
-  if (sellBtn) sellBtn.textContent = fallback > 0 ? `💰 Vender ($${fallback.toFixed(2)})` : '💰 Vender';
+  if (sellBtn) sellBtn.textContent = fallback > 0 ? `💰 Vender (${Math.round(fallback).toLocaleString("pt-BR")} coins)` : '💰 Vender';
 
   getMarketPrice(item.name, item.wear).then(mp => {
     if (mp === null) return;
-    if (sellBtn && sellBtn.isConnected) sellBtn.textContent = `💰 Vender ($${mp.toFixed(2)})`;
+    if (sellBtn && sellBtn.isConnected) sellBtn.textContent = `💰 Vender (${Math.round(mp).toLocaleString("pt-BR")} coins)`;
   }).catch(() => {});
 
   overlay.classList.add('show');
@@ -240,12 +238,12 @@ export function showMultiModal(items, onKeepAll, onSellAll, onClose) {
     // Mostrar total com preços reais do Steam Market (fallback: raridade)
     const sellAllBtn = document.getElementById('multi-sell-all');
     const fallbackTotal = items.reduce((s, i) => s + (SELL_PRICES[i.rarity]||0), 0);
-    if (sellAllBtn) sellAllBtn.textContent = `💰 Vender Tudo ($${fallbackTotal.toFixed(2)})`;
+    if (sellAllBtn) sellAllBtn.textContent = `💰 Vender Tudo (${Math.round(fallbackTotal).toLocaleString('pt-BR')} coins)`;
 
     Promise.all(items.map(i => getMarketPrice(i.name, i.wear).catch(() => null))).then(prices => {
       const realTotal = items.reduce((s, item, idx) => s + (prices[idx] ?? SELL_PRICES[item.rarity] ?? 0), 0);
       if (sellAllBtn && sellAllBtn.isConnected) {
-        sellAllBtn.textContent = `💰 Vender Tudo ($${realTotal.toFixed(2)})`;
+        sellAllBtn.textContent = `💰 Vender Tudo (${Math.round(realTotal).toLocaleString('pt-BR')} coins)`;
       }
     });
   }, totalDelay);
@@ -285,7 +283,7 @@ export function renderInventory(inventory, onSell) {
       <div class="inv-name">${item.name}</div>
       <div class="inv-rarity" style="color:${RARITY_COLORS[item.rarity]}">${RARITY_NAMES[item.rarity]||item.rarity}</div>
       <div class="inv-wear">${WEAR_NAMES[item.wear]||item.wear||''}</div>
-      <button class="inv-sell-btn" data-id="${item.id}">💰 $${fallback.toFixed(2)}</button>
+      <button class="inv-sell-btn" data-id="${item.id}">💰 ${Math.round(fallback).toLocaleString('pt-BR')} coins</button>
     </div>`;
   }).join('');
 
@@ -294,7 +292,7 @@ export function renderInventory(inventory, onSell) {
     getMarketPrice(item.name, item.wear).then(mp => {
       if (mp === null) return;
       const btn = grid.querySelector(`.inv-sell-btn[data-id="${item.id}"]`);
-      if (btn) btn.textContent = `💰 $${mp.toFixed(2)}`;
+      if (btn) btn.textContent = `💰 ${Math.round(mp).toLocaleString('pt-BR')} coins`;
     }).catch(() => {});
   });
 
@@ -314,7 +312,7 @@ export function renderInventory(inventory, onSell) {
 // ===== HISTORY PAGE =====
 export function renderHistory(history, stats) {
   document.getElementById('h-total').textContent  = stats?.total ?? 0;
-  document.getElementById('h-spent').textContent  = stats ? `$${stats.totalSpent.toFixed(2)}` : '$0.00';
+  document.getElementById('h-spent').textContent  = stats ? `${Math.round(stats.totalSpent).toLocaleString('pt-BR')} coins` : '0 coins';
 
   const bestSection = document.getElementById('best-drop-section');
   if (stats?.bestItem) {
@@ -463,7 +461,7 @@ export function showDailyModal(amount, onClaim) {
   const overlay = document.getElementById('daily-overlay');
   if (!overlay) return;
   const amtEl = document.getElementById('daily-amount');
-  if (amtEl) amtEl.textContent = `$${amount.toFixed(2)}`;
+  if (amtEl) amtEl.textContent = `${Math.round(amount).toLocaleString('pt-BR')} coins`;
   overlay.classList.add('show');
 
   const btn = document.getElementById('daily-claim-btn');

@@ -4,55 +4,449 @@
       "id": "revolution",
       "name": "Revolution Case",
       "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnAVvfb6aqduc_TFVjTCxbx05OU4S3jilE9w4DzRnImtIy2Sa1JzDJEhRPlK7EcO4U8gfA/256fx256f",
-      "price": 2.50,
+      "price": 2500,
       "items": [
-        { "id": "ak47_inheritance", "name": "AK-47 | Inheritance", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPr_DLjZ2zoI6sQlj7-TpdziiVC3807aZjulJYRoMA/360fx360f" },
-        { "id": "m4a1s_printstream", "name": "M4A1-S | Printstream", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszFJTwT09S5g4yCmfDLP7LWnn8f6pQljLuSp9yg3w21rhE-Nz-nI4DAIVc4aVqE_FTrxLzpgMKwtJ_JnoXslXFnsg/360fx360f" },
-        { "id": "awp_duality", "name": "AWP | Duality", "rarity": "classified", "color": "#d32ce6", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jTpd-iiVLj-Rc-Yz-iLNKcewN5Q/360fx360f" },
-        { "id": "glock_bullet_queen", "name": "Glock-18 | Bullet Queen", "rarity": "classified", "color": "#d32ce6", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I303lGx-ks6YW2iIYTEIAZsNg/360fx360f" },
-        { "id": "usp_s_printstream", "name": "USP-S | Printstream", "rarity": "classified", "color": "#d32ce6", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpNw/360fx360f" },
-        { "id": "sg553_hyper_beast", "name": "SG 553 | Hyper Beast", "rarity": "restricted", "color": "#8847ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FABz7eLd_iJN79ezlZW0mvbmMezclT5D18l0juDN9I303lGx-Es4Yz-jJoWcc1c4NQ/360fx360f" },
-        { "id": "mp9_hydra", "name": "MP9 | Hydra", "rarity": "restricted", "color": "#8847ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTgxZM0/360fx360f" },
-        { "id": "xm1014_incinegator", "name": "XM1014 | Incinegator", "rarity": "restricted", "color": "#8847ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpor1Bge19fwPj-Jl_T09-5lpKKqPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpgQ/360fx360f" },
-        { "id": "mac10_disco_tech", "name": "MAC-10 | Disco Tech", "rarity": "milspec", "color": "#4b69ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj3mIoGDJlhpSTd1kMA/360fx360f" },
-        { "id": "mp5sd_phosphor", "name": "MP5-SD | Phosphor", "rarity": "milspec", "color": "#4b69ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmH6I4Kcc1c4NQ/360fx360f" },
-        { "id": "knife_karambit", "name": "★ Karambit | Doppler", "rarity": "gold", "color": "#e4ae39", "wear": ["FN","MW"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciPl4mDkPLLP7LWnn8fupJ11L2Yod6i3FXm-0ZoMTqlIYGRJg/360fx360f" }
+        {
+          "id": "ak47_inheritance",
+          "name": "AK-47 | Inheritance",
+          "rarity": "covert",
+          "color": "#eb4b4b",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPr_DLjZ2zoI6sQlj7-TpdziiVC3807aZjulJYRoMA/360fx360f"
+        },
+        {
+          "id": "m4a1s_printstream",
+          "name": "M4A1-S | Printstream",
+          "rarity": "covert",
+          "color": "#eb4b4b",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszFJTwT09S5g4yCmfDLP7LWnn8f6pQljLuSp9yg3w21rhE-Nz-nI4DAIVc4aVqE_FTrxLzpgMKwtJ_JnoXslXFnsg/360fx360f"
+        },
+        {
+          "id": "awp_duality",
+          "name": "AWP | Duality",
+          "rarity": "classified",
+          "color": "#d32ce6",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jTpd-iiVLj-Rc-Yz-iLNKcewN5Q/360fx360f"
+        },
+        {
+          "id": "glock_bullet_queen",
+          "name": "Glock-18 | Bullet Queen",
+          "rarity": "classified",
+          "color": "#d32ce6",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I303lGx-ks6YW2iIYTEIAZsNg/360fx360f"
+        },
+        {
+          "id": "usp_s_printstream",
+          "name": "USP-S | Printstream",
+          "rarity": "classified",
+          "color": "#d32ce6",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpNw/360fx360f"
+        },
+        {
+          "id": "sg553_hyper_beast",
+          "name": "SG 553 | Hyper Beast",
+          "rarity": "restricted",
+          "color": "#8847ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FABz7eLd_iJN79ezlZW0mvbmMezclT5D18l0juDN9I303lGx-Es4Yz-jJoWcc1c4NQ/360fx360f"
+        },
+        {
+          "id": "mp9_hydra",
+          "name": "MP9 | Hydra",
+          "rarity": "restricted",
+          "color": "#8847ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTgxZM0/360fx360f"
+        },
+        {
+          "id": "xm1014_incinegator",
+          "name": "XM1014 | Incinegator",
+          "rarity": "restricted",
+          "color": "#8847ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpor1Bge19fwPj-Jl_T09-5lpKKqPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpgQ/360fx360f"
+        },
+        {
+          "id": "mac10_disco_tech",
+          "name": "MAC-10 | Disco Tech",
+          "rarity": "milspec",
+          "color": "#4b69ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj3mIoGDJlhpSTd1kMA/360fx360f"
+        },
+        {
+          "id": "mp5sd_phosphor",
+          "name": "MP5-SD | Phosphor",
+          "rarity": "milspec",
+          "color": "#4b69ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmH6I4Kcc1c4NQ/360fx360f"
+        },
+        {
+          "id": "knife_karambit",
+          "name": "★ Karambit | Doppler",
+          "rarity": "gold",
+          "color": "#e4ae39",
+          "wear": [
+            "FN",
+            "MW"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciPl4mDkPLLP7LWnn8fupJ11L2Yod6i3FXm-0ZoMTqlIYGRJg/360fx360f"
+        }
       ]
     },
     {
       "id": "kilowatt",
       "name": "Kilowatt Case",
       "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnEVvqf_a6VoIfGSXz7Hlbwg57QwSS_mxhl15jiGyN37c3_GZw91W8BwRflK7EfKsa2sfw/256fx256f",
-      "price": 3.00,
+      "price": 3000,
       "items": [
-        { "id": "ak47_vulcan", "name": "AK-47 | Vulcan", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPLmMr-3m2pf4sR0j-jTpamh2Qa3-kJpYmj7ddSLMlho/360fx360f" },
-        { "id": "m4a4_howl", "name": "M4A4 | Howl", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszFJTwT09S5g4yCmfDLP7LWnn8f6pQljLuSp9yt31Hj_Us9N3GiIYTEdFE7bw/360fx360f" },
-        { "id": "awp_chromatic_aberration", "name": "AWP | Chromatic Aberration", "rarity": "classified", "color": "#d32ce6", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jT5I7214n5-hZv_2ymIoGDJlhpNmA/360fx360f" },
-        { "id": "p90_vent_rush", "name": "P90 | Vent Rush", "rarity": "classified", "color": "#d32ce6", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f" },
-        { "id": "usp_s_jawbreaker", "name": "USP-S | Jawbreaker", "rarity": "restricted", "color": "#8847ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT_d2k3FHh-0prZmj7dNTC/360fx360f" },
-        { "id": "glock_wasteland_rebel", "name": "Glock-18 | Wasteland Rebel", "rarity": "restricted", "color": "#8847ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f" },
-        { "id": "mp7_gunsmoke", "name": "MP7 | Gunsmoke", "rarity": "milspec", "color": "#4b69ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmqBI4Kcc1c4NQ/360fx360f" },
-        { "id": "nova_hyper_beast", "name": "Nova | Hyper Beast", "rarity": "milspec", "color": "#4b69ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj32I4Kcc1c4NQ/360fx360f" },
-        { "id": "knife_butterfly", "name": "★ Butterfly Knife | Fade", "rarity": "gold", "color": "#e4ae39", "wear": ["FN","MW"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1eb3dShQ7t2knZKPkuX1M6_ummJW4NE_j7jT8dms2gfs-hFuZWGgdI6TdlhpNmOb/360fx360f" }
+        {
+          "id": "ak47_vulcan",
+          "name": "AK-47 | Vulcan",
+          "rarity": "covert",
+          "color": "#eb4b4b",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPLmMr-3m2pf4sR0j-jTpamh2Qa3-kJpYmj7ddSLMlho/360fx360f"
+        },
+        {
+          "id": "m4a4_howl",
+          "name": "M4A4 | Howl",
+          "rarity": "covert",
+          "color": "#eb4b4b",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszFJTwT09S5g4yCmfDLP7LWnn8f6pQljLuSp9yt31Hj_Us9N3GiIYTEdFE7bw/360fx360f"
+        },
+        {
+          "id": "awp_chromatic_aberration",
+          "name": "AWP | Chromatic Aberration",
+          "rarity": "classified",
+          "color": "#d32ce6",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jT5I7214n5-hZv_2ymIoGDJlhpNmA/360fx360f"
+        },
+        {
+          "id": "p90_vent_rush",
+          "name": "P90 | Vent Rush",
+          "rarity": "classified",
+          "color": "#d32ce6",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f"
+        },
+        {
+          "id": "usp_s_jawbreaker",
+          "name": "USP-S | Jawbreaker",
+          "rarity": "restricted",
+          "color": "#8847ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT_d2k3FHh-0prZmj7dNTC/360fx360f"
+        },
+        {
+          "id": "glock_wasteland_rebel",
+          "name": "Glock-18 | Wasteland Rebel",
+          "rarity": "restricted",
+          "color": "#8847ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f"
+        },
+        {
+          "id": "mp7_gunsmoke",
+          "name": "MP7 | Gunsmoke",
+          "rarity": "milspec",
+          "color": "#4b69ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmqBI4Kcc1c4NQ/360fx360f"
+        },
+        {
+          "id": "nova_hyper_beast",
+          "name": "Nova | Hyper Beast",
+          "rarity": "milspec",
+          "color": "#4b69ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj32I4Kcc1c4NQ/360fx360f"
+        },
+        {
+          "id": "knife_butterfly",
+          "name": "★ Butterfly Knife | Fade",
+          "rarity": "gold",
+          "color": "#e4ae39",
+          "wear": [
+            "FN",
+            "MW"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1eb3dShQ7t2knZKPkuX1M6_ummJW4NE_j7jT8dms2gfs-hFuZWGgdI6TdlhpNmOb/360fx360f"
+        }
       ]
     },
     {
       "id": "dreams_nightmares",
       "name": "Dreams & Nightmares",
       "image": "https://community.fastly.steamstatic.com/public/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJKz2lu_XsnXwtmkJjSU91dh8bj35VTqVBP4io_frnIV7Kb5OaU-JqfHDzXFle0u4LY8Gy_kkRgisGzcm4v4J3vDOAQmDMdyRvlK7EcmeCU3yw/256fx256f",
-      "price": 1.80,
+      "price": 1800,
       "items": [
-        { "id": "ak47_nightwish", "name": "AK-47 | Nightwish", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPLmMr-3m2pf4sR0j-jT_d2k3FHh-0prZmj7dNTC/360fx360f" },
-        { "id": "m4a1s_dreamscape", "name": "M4A1-S | Dreamscape", "rarity": "covert", "color": "#eb4b4b", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f" },
-        { "id": "awp_dreams_nightmares", "name": "AWP | Dreams & Nightmares", "rarity": "classified", "color": "#d32ce6", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jT5I7214n5-hZv_2ymIoGDJlhpNmA/360fx360f" },
-        { "id": "usp_s_nightshade", "name": "USP-S | Nightshade", "rarity": "classified", "color": "#d32ce6", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpNw/360fx360f" },
-        { "id": "mac10_ensnared", "name": "MAC-10 | Ensnared", "rarity": "restricted", "color": "#8847ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj32I4Kcc1c4NQ/360fx360f" },
-        { "id": "sg553_phantasm", "name": "SG 553 | Phantasm", "rarity": "restricted", "color": "#8847ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FABz7eLd_iJN79ezlZW0mvbmMezclT5D18l0juDN9I303lGx-Es4Yz-jJoWcc1c4NQ/360fx360f" },
-        { "id": "mp9_ethereal", "name": "MP9 | Ethereal", "rarity": "restricted", "color": "#8847ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTgxZM0/360fx360f" },
-        { "id": "glock_vogue", "name": "Glock-18 | Vogue", "rarity": "milspec", "color": "#4b69ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjxkvc/360fx360f" },
-        { "id": "xm1014_haunted", "name": "XM1014 | Haunted", "rarity": "milspec", "color": "#4b69ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpor1Bge19fwPj-Jl_T09-5lpKKqPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpgQ/360fx360f" },
-        { "id": "mp7_reverie", "name": "MP7 | Reverie", "rarity": "milspec", "color": "#4b69ff", "wear": ["FN","MW","FT","WW","BS"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmqBI4Kcc1c4NQ/360fx360f" },
-        { "id": "knife_shadow_daggers", "name": "★ Shadow Daggers | Doppler", "rarity": "gold", "color": "#e4ae39", "wear": ["FN","MW"], "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJfw9_HYzxS6NSjxdmOxvajNLrAkGlV18hw_LvKrNii2VDkrBM4ZTrwdteLMlhpMMQ/360fx360f" }
+        {
+          "id": "ak47_nightwish",
+          "name": "AK-47 | Nightwish",
+          "rarity": "covert",
+          "color": "#eb4b4b",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV09-5lpKKqPLmMr-3m2pf4sR0j-jT_d2k3FHh-0prZmj7dNTC/360fx360f"
+        },
+        {
+          "id": "m4a1s_dreamscape",
+          "name": "M4A1-S | Dreamscape",
+          "rarity": "covert",
+          "color": "#eb4b4b",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjtGpQ/360fx360f"
+        },
+        {
+          "id": "awp_dreams_nightmares",
+          "name": "AWP | Dreams & Nightmares",
+          "rarity": "classified",
+          "color": "#d32ce6",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PLfYQJR_9W5k4yCkP_gDLfZkWxf6cR0j-jT5I7214n5-hZv_2ymIoGDJlhpNmA/360fx360f"
+        },
+        {
+          "id": "usp_s_nightshade",
+          "name": "USP-S | Nightshade",
+          "rarity": "classified",
+          "color": "#d32ce6",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-vq4ifkPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpNw/360fx360f"
+        },
+        {
+          "id": "mac10_ensnared",
+          "name": "MAC-10 | Ensnared",
+          "rarity": "restricted",
+          "color": "#8847ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5Nj32I4Kcc1c4NQ/360fx360f"
+        },
+        {
+          "id": "sg553_phantasm",
+          "name": "SG 553 | Phantasm",
+          "rarity": "restricted",
+          "color": "#8847ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FABz7eLd_iJN79ezlZW0mvbmMezclT5D18l0juDN9I303lGx-Es4Yz-jJoWcc1c4NQ/360fx360f"
+        },
+        {
+          "id": "mp9_ethereal",
+          "name": "MP9 | Ethereal",
+          "rarity": "restricted",
+          "color": "#8847ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuxWoHucpxi77C9I300VHl_BE9YW33IIKLMlhpSTgxZM0/360fx360f"
+        },
+        {
+          "id": "glock_vogue",
+          "name": "Glock-18 | Vogue",
+          "rarity": "milspec",
+          "color": "#4b69ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_9mkgar4xqGhYuyCxm5V18l0juDN9I300VHl_BE9YW33IIKLMlhpSTjxkvc/360fx360f"
+        },
+        {
+          "id": "xm1014_haunted",
+          "name": "XM1014 | Haunted",
+          "rarity": "milspec",
+          "color": "#4b69ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpor1Bge19fwPj-Jl_T09-5lpKKqPLmMrjum2pf4sR0j-jT5I7214n5-hZv_2ymIoGDJlhpgQ/360fx360f"
+        },
+        {
+          "id": "mp7_reverie",
+          "name": "MP7 | Reverie",
+          "rarity": "milspec",
+          "color": "#4b69ff",
+          "wear": [
+            "FN",
+            "MW",
+            "FT",
+            "WW",
+            "BS"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6sRFwpfv9T0deBQ6t6zkIaKxfW-ZujuwT5V18l0juDN9I303lGx-ks5NmqBI4Kcc1c4NQ/360fx360f"
+        },
+        {
+          "id": "knife_shadow_daggers",
+          "name": "★ Shadow Daggers | Doppler",
+          "rarity": "gold",
+          "color": "#e4ae39",
+          "wear": [
+            "FN",
+            "MW"
+          ],
+          "image": "https://community.fastly.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJfw9_HYzxS6NSjxdmOxvajNLrAkGlV18hw_LvKrNii2VDkrBM4ZTrwdteLMlhpMMQ/360fx360f"
+        }
       ]
     }
   ]
