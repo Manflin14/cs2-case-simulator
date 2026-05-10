@@ -1,5 +1,5 @@
 import { loadCases, rollItem, generateRouletteItems } from './data.js?v=6';
-import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=8';
+import { getBalance, setBalance, spend, addFunds, sellItem, setCurrentUser } from './economy.js?v=9';
 import { getInventory, addToInventory, removeFromInventory, removeItemsFromInventory } from './inventory.js?v=6';
 import { recordOpening, getHistory, computeStats } from './history.js?v=6';
 import { playClick, playWin, startRouletteSounds, stopRouletteSounds } from './sounds.js?v=4';
@@ -364,37 +364,7 @@ async function openCase(qty = 1) {
   document.getElementById('open-btn').disabled  = true;
   document.getElementById('multi-btn').disabled = true;
 
-  // Usuário logado: lógica server-side via Edge Function
-  if (currentUser) {
-    try {
-      const result = await callEdge('case-open', { caseId: currentCase.id, qty });
-      const { items, newBalance, newXP } = result;
-
-      setBalance(newBalance);
-      updateWalletUI(newBalance);
-      currentXP = newXP;
-      updateNavRank(currentXP);
-
-      // Atualizar inventário local
-      items.forEach(item => addToInventory(item));
-      items.forEach(() => incrementStat('opened'));
-
-      if (qty === 1) {
-        await showSingleAnimation(items[0]);
-      } else {
-        await showMultiResult(items, qty);
-      }
-      await processAchievements();
-    } catch (err) {
-      const msg = err.message || 'Erro ao abrir case';
-      showToast(msg.includes('Saldo') ? msg : 'Erro ao abrir case. Tente novamente.', 'error');
-      isSpinning = false;
-      enableOpenBtns();
-    }
-    return;
-  }
-
-  // Modo convidado: lógica client-side
+  // Lógica client-side unificada (funciona para guests e usuários logados)
   const totalCost = currentCase.price * qty;
   const ok = await spend(totalCost);
   if (!ok) {
@@ -404,14 +374,30 @@ async function openCase(qty = 1) {
     return;
   }
 
+  const wonItems = Array.from({ length: qty }, () => rollItem(currentCase.items));
+  wonItems.forEach(item => addToInventory(item));
+  wonItems.forEach(() => incrementStat('opened'));
+
+  // Salvar no servidor se logado
+  if (currentUser) {
+    try {
+      const xpGain = wonItems.reduce((s, it) => s + getXPForItem(it), 0);
+      currentXP = await addRankXPRPC(xpGain);
+      updateNavRank(currentXP);
+      for (const item of wonItems) {
+        await saveInventoryItem(item).catch(() => {});
+        await saveHistoryEntry({ item, caseId: currentCase.id, caseName: currentCase.name }).catch(() => {});
+      }
+    } catch (_) { /* falha silenciosa — item já salvo localmente */ }
+  }
+
   if (qty === 1) {
-    const wonItem = rollItem(currentCase.items);
-    await showSingleAnimation(wonItem);
-    await saveWonItemGuest(wonItem);
+    await showSingleAnimation(wonItems[0]);
+    if (!currentUser) await saveWonItemGuest(wonItems[0]);
   } else {
-    const wonItems = Array.from({ length: qty }, () => rollItem(currentCase.items));
     await showMultiResult(wonItems, qty);
   }
+  await processAchievements();
 }
 
 // ===== ANIMAÇÃO SINGLE =====

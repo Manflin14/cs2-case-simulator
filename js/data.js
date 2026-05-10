@@ -46,7 +46,7 @@ export const RARITY_COLORS = {
 
 // Carregar dados das cases
 export async function loadCases() {
-  const res = await fetch('./data/cases.json?v=2');
+  const res = await fetch('./data/cases.json?v=3');
   const data = await res.json();
   return data.cases;
 }
